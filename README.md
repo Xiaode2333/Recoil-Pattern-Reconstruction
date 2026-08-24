@@ -1,27 +1,27 @@
-# 后坐力轨迹重建（Feature Matching + RANSAC）
+# Recoil Pattern Reconstruction (Feature Matching + RANSAC)
 
-脚本默认自动扫描整段视频并分析一轮完整弹匣射击：
+By default, the script automatically scans an entire video and analyzes one complete magazine:
 
-1. 全片扫描右下角当前弹药数字，通过字形变化的周期性自动识别射击帧范围、射速、弹匣容量和射击数；再用动态规划细化分段，并把数字从 `n` 变为 `n-1` 的第一帧作为关键帧。
-2. 只在瞄准镜外的墙面区域提取 SIFT（或 ORB）特征；瞄准镜、枪体、HUD 和高亮火花均被屏蔽。
-3. 相邻帧用 KNN Feature Matching + Lowe ratio test，随后以 RANSAC 剔除火花等动态外点，再把内点拟合为无缩放的平移+旋转 SE(2)。
-4. 在每个关键帧内独立检测准星：2× 镜使用黑色横、纵刻度线交点及其小角度旋转，93R/G18 的 1× 镜使用紧凑红点检测。强烈火花不会直接决定准星位置。
-5. 把关键帧的实际刻度线交点逆变换到自动识别区间的起始帧坐标系，得到后坐力轨迹。
-6. 根据关键帧和视频 FPS 生成首发为 0 的 `shot_time_ms`；根据像素轨迹、FOV 和镜倍估算最大俯仰角。
+1. It scans the current ammo count in the lower-right corner of the video and uses periodic glyph changes to detect the firing frame range, fire rate, magazine capacity, and shot count. Dynamic programming then refines the segmentation, and the first frame where the count changes from `n` to `n-1` becomes a keyframe.
+2. It extracts SIFT (or ORB) features only from the wall area outside the scope. The scope, weapon, HUD, and bright muzzle flashes are masked out.
+3. Adjacent frames are matched with KNN feature matching and Lowe's ratio test. RANSAC rejects dynamic outliers such as muzzle flashes, and the inliers are fitted to a scale-free translation-and-rotation SE(2) transform.
+4. The reticle is detected independently in every keyframe. For 2x optics, detection uses the intersection and small-angle rotation of the black horizontal and vertical tick marks. For the 1x optics used by the 93R and G18, it uses compact red-dot detection. Intense muzzle flashes do not directly determine the reticle position.
+5. The detected tick-mark intersection in each keyframe is inverse-transformed into the coordinate system of the automatically detected start frame, producing the recoil trajectory.
+6. The keyframes and video FPS are used to generate `shot_time_ms`, with the first shot at zero. The pixel trajectory, FOV, and optic magnification are used to estimate the maximum pitch angle.
 
-核心公式为：
+The core equations are:
 
 ```text
-A_i : frame(i-1) 的镜外背景 -> frame(i)
+A_i : background outside the scope in frame(i-1) -> frame(i)
 C_i = C_(i-1) @ inverse(A_i) : frame(i) -> analysis_start_frame
 p_i = C_i @ [reticle_x_i, reticle_y_i, 1]
 ```
 
-因此最终点 `p_i` 同时包含镜外画面的平移/旋转和准星自身的帧内抖动；不会把关键帧间的画面变换直接当成弹着点。
+The final point `p_i` therefore includes both the translation/rotation of the scene outside the scope and the reticle's within-frame jitter. The transform between keyframes is not treated directly as the point of impact.
 
-## 安装与运行
+## Installation and Usage
 
-PowerShell：
+PowerShell:
 
 ```powershell
 python -m venv .venv
@@ -29,53 +29,53 @@ python -m venv .venv
 .\.venv\Scripts\python.exe .\analyze_recoil.py "D:\DF\RM277_x1_opx2.mp4"
 ```
 
-本机实际找到的视频是 `D:\DF\RM277_x1_opx2.mp4`，而不是 `D:\DF\RM277\_x1\_opx2.mp4`。它已经是脚本的默认输入，所以也可以直接运行：
+The video found on the development machine is `D:\DF\RM277_x1_opx2.mp4`, not `D:\DF\RM277\_x1\_opx2.mp4`. This is already the script's default input, so it can also be run directly:
 
 ```powershell
 .\.venv\Scripts\python.exe .\analyze_recoil.py
 ```
 
-例如自动分析 AR57，并写入独立目录：
+For example, to analyze an AR57 video automatically and write the results to a separate directory:
 
 ```powershell
 .\.venv\Scripts\python.exe .\analyze_recoil.py "D:\DF\AR57.mp4" `
   --output-dir .\recoil_output_ar57
 ```
 
-自动模式假设视频包含一轮从满弹匣连续打到 `0` 的射击，因此识别到的连续数字变化次数就是弹匣容量。若视频只录了部分弹匣，必须同时提供四个手动参数：
+Automatic mode assumes that the video contains one uninterrupted sequence from a full magazine down to `0`, so the number of consecutive ammo-count changes is treated as the magazine capacity. If the video contains only part of a magazine, all four manual parameters must be provided:
 
 ```powershell
 .\.venv\Scripts\python.exe .\analyze_recoil.py VIDEO.mp4 `
   --start-frame 400 --end-frame 1000 --start-ammo 45 --shot-count 45
 ```
 
-## 主要输出
+## Main Outputs
 
-- `recoil_output/keyframes_recoil.csv`：自动识别的弹药变化关键帧、`shot_time_ms`、准星屏幕位置、统一坐标、每发位移、背景分量、准星抖动分量和旋转。
-- `recoil_output/all_frames_motion.csv`：自动射击区间每一帧的匹配数、RANSAC 内点、内点率、重投影误差、平移和旋转。
-- `recoil_output/ammo_detection.csv`：全片每帧弹药字形变化分数、自动阈值和粗定位事件。
-- `recoil_output/recoil_trajectory.png`：后坐力轨迹图（右/上为正）。
-- `recoil_output/reticle_keyframes_contact_sheet.jpg`：45 个关键帧的刻度线交点检测复核图。
-- `recoil_output/feature_mask.png`：绿色为镜外 RANSAC 实际使用区域。
-- `recoil_output/summary.json`：自动弹匣数、帧范围、关键帧、发射时间、最低质量指标以及 FOV/镜倍 pitch 估算。
+- `recoil_output/keyframes_recoil.csv`: Automatically detected ammo-change keyframes, `shot_time_ms`, on-screen reticle positions, unified coordinates, per-shot displacement, background components, reticle-jitter components, and rotation.
+- `recoil_output/all_frames_motion.csv`: Match counts, RANSAC inliers, inlier ratio, reprojection error, translation, and rotation for every frame in the automatically detected firing interval.
+- `recoil_output/ammo_detection.csv`: Per-frame ammo-glyph change scores, automatic thresholds, and coarse events for the entire video.
+- `recoil_output/recoil_trajectory.png`: Recoil trajectory plot, with right/up as positive directions.
+- `recoil_output/reticle_keyframes_contact_sheet.jpg`: Review sheet showing tick-mark intersection detection across 45 keyframes.
+- `recoil_output/feature_mask.png`: The green area shows the region outside the scope that RANSAC actually uses.
+- `recoil_output/summary.json`: Automatically detected magazine count, frame ranges, keyframes, shot times, minimum quality metrics, and the FOV/magnification-based pitch estimate.
 
-CSV 中可直接使用：
+The following CSV columns can be used directly:
 
-- `recoil_x_right_px`, `recoil_y_up_px`：相对分析起始帧的累计后坐力点。
-- `shot_time_ms`：以首发为 0，根据弹药变化关键帧和视频 FPS 计算的发射时间。
-- `shot_delta_x_right_px`, `shot_delta_y_up_px`：当前发相对上一发的位移。
-- `background_only_*`：若准星固定在画面中心时，仅镜外运动产生的轨迹。
-- `reticle_jitter_contribution_*`：准星帧内位置变化额外贡献的分量。
+- `recoil_x_right_px`, `recoil_y_up_px`: Cumulative recoil points relative to the analysis start frame.
+- `shot_time_ms`: Shot time calculated from the ammo-change keyframes and video FPS, with the first shot at zero.
+- `shot_delta_x_right_px`, `shot_delta_y_up_px`: Displacement of the current shot relative to the previous shot.
+- `background_only_*`: The trajectory produced only by motion outside the scope, assuming the reticle remains fixed at the center of the frame.
+- `reticle_jitter_contribution_*`: The additional component contributed by within-frame reticle movement.
 
-## 校准参数
+## Calibration Parameters
 
-默认 ROI 和掩膜已按这段 2560×1440 视频标定。若弹药位置改变，用：
+The default ROI and masks are calibrated for the reference 2560x1440 video. If the ammo counter appears in a different location, use:
 
 ```powershell
 .\.venv\Scripts\python.exe .\analyze_recoil.py VIDEO.mp4 --ammo-roi x0,y0,x1,y1
 ```
 
-如果某些帧的运动质量偏低，先查看 `all_frames_motion.csv` 的 `status`、`inliers`、`inlier_ratio` 和 `median_reprojection_error_px`，再调整：
+If motion quality is low in some frames, first inspect `status`, `inliers`, `inlier_ratio`, and `median_reprojection_error_px` in `all_frames_motion.csv`, then adjust:
 
 ```text
 --feature-scale 0.75
@@ -84,38 +84,38 @@ CSV 中可直接使用：
 --ransac-threshold 2.5
 ```
 
-脚本不会静默接受 RANSAC 失败的帧：失败步长会标记为 `interpolated`，数量同时写入 `summary.json`。
+The script does not silently accept frames where RANSAC fails. Failed steps are marked as `interpolated`, and their count is also recorded in `summary.json`.
 
-默认 pitch 参数与 Recoil Trainer 一致：游戏配置 FOV 为 104° 的 4:3 参考横向 FOV，瞄准镜为 2×。可覆盖：
+The default pitch parameters match Recoil Trainer: the game's configured FOV is a 104-degree 4:3 reference horizontal FOV, and the optic is 2x. These values can be overridden:
 
 ```powershell
 .\.venv\Scripts\python.exe .\analyze_recoil.py VIDEO.mp4 `
   --fov-deg 104 --fov-axis reference-horizontal --scope-magnification 2
 ```
 
-换算使用针孔投影，不是简单的“像素比例乘 FOV”。`reference-horizontal` 会先按镜倍缩小 ADS FOV，再按 Recoil Trainer 的 4:3 参考模型换算纵向焦距。
+The conversion uses pinhole projection, not a simple pixel-ratio-times-FOV calculation. `reference-horizontal` first reduces the ADS FOV according to the optic magnification, then calculates the vertical focal length using Recoil Trainer's 4:3 reference model.
 
-## 转换为 Recoil Trainer Profile JSON
+## Converting to Recoil Trainer Profile JSON
 
-`convert_to_recoiltrainer.py` 会读取累计轨迹列 `recoil_x_right_px`、`recoil_y_up_px`，生成 Recoil Trainer 的 `WeaponProfile` JSON。它不会把准星抖动丢掉，因为这两个累计坐标已经同时包含镜外画面运动与刻度线在帧内的位置变化。
+`convert_to_recoiltrainer.py` reads the cumulative trajectory columns `recoil_x_right_px` and `recoil_y_up_px` and produces a Recoil Trainer `WeaponProfile` JSON file. Reticle jitter is preserved because these cumulative coordinates already include both scene motion outside the scope and within-frame tick-mark movement.
 
-默认转换当前识别结果：
+Convert the currently detected result with:
 
 ```powershell
 .\.venv\Scripts\python.exe .\convert_to_recoiltrainer.py
 ```
 
-输出为 `recoil_output/rm277_x1_opx2_recoiltrainer.json`。脚本会：
+The output is `recoil_output/rm277_x1_opx2_recoiltrainer.json`. The script:
 
-- 把识别结果第 1 发映射为 Profile 的 `shot_index=0`，不额外增加虚构的起始发；
-- 优先直接使用识别阶段写出的 `shot_time_ms`，并验证 `t_ms` 从 0 开始且严格递增；
-- 横纵坐标使用同一个缩放倍数，默认把纵向跨度归一到 240，同时保持实际左右摆动比例；
-- 自动把 `summary.json` 中按 104° FOV、2× 镜估算的最大 pitch 写入 `recorded_recoil_pitch_range_deg`；
-- 默认写入 `smoothing="spline"`、`smoothing_strength=0.2`；
-- 调用 Recoil Trainer 自身的平滑和“Auto Segment”实现，根据平滑后轨迹的 X 方向变化生成 `segments`；
-- 使用 `C:\XiaodeDocuments\Programs\RecoilTrainer` 中正式的 `WeaponProfile` 模型做加载和往返校验。
+- Maps the first detected shot to Profile `shot_index=0` without adding an artificial starting shot.
+- Uses `shot_time_ms` from the detection stage whenever possible and verifies that `t_ms` starts at zero and is strictly increasing.
+- Uses the same scale factor for both axes. By default, it normalizes the vertical span to 240 while preserving the actual horizontal movement ratio.
+- Automatically writes the maximum pitch estimated from the 104-degree FOV and 2x optic in `summary.json` to `recorded_recoil_pitch_range_deg`.
+- Writes `smoothing="spline"` and `smoothing_strength=0.2` by default.
+- Calls Recoil Trainer's own smoothing and Auto Segment implementations to generate `segments` from changes in the smoothed trajectory's X direction.
+- Uses the official `WeaponProfile` model in `C:\XiaodeDocuments\Programs\RecoilTrainer` for loading and round-trip validation.
 
-常用自定义参数：
+Common customization parameters:
 
 ```powershell
 .\.venv\Scripts\python.exe .\convert_to_recoiltrainer.py `
@@ -125,43 +125,43 @@ CSV 中可直接使用：
   --target-vertical-span 240
 ```
 
-其中轨迹形状由识别数据决定；`recorded_recoil_pitch_range_deg` 决定训练场内这段纵向轨迹代表的实际俯仰角。若有游戏内准确的总后坐角度，可用 `--recorded-pitch-deg VALUE` 覆盖自动估算。调试时若不希望调用训练器自动分段，可显式使用 `--segmentation single`。
+The detected data determines the trajectory shape, while `recorded_recoil_pitch_range_deg` determines the physical pitch angle represented by that vertical trajectory in the training range. If the exact total recoil angle is known from the game, use `--recorded-pitch-deg VALUE` to override the automatic estimate. For debugging without trainer-driven automatic segmentation, explicitly use `--segmentation single`.
 
-## 批量处理 Delta Force 视频并导入 Steam 版
+## Batch-Processing Delta Force Videos and Importing into the Steam Version
 
-`batch_delta_force.py` 会发现 `D:\DF` 下的全部 `.mp4`，逐一运行完整分析和转换流程。只有所有项目均通过弹匣 OCR、关键帧数、RANSAC、准星置信度、pitch、双语字段、平滑和分段校验后，`--import-steam` 才会写入 Steam 版数据目录：
+`batch_delta_force.py` discovers every `.mp4` file under `D:\DF` and runs the complete analysis and conversion pipeline for each one. `--import-steam` writes to the Steam data directory only after every item passes the magazine OCR, keyframe-count, RANSAC, reticle-confidence, pitch, bilingual-field, smoothing, and segmentation checks:
 
 ```powershell
 .\.venv\Scripts\python.exe .\batch_delta_force.py `
   --max-workers 2 --resume --import-steam
 ```
 
-批处理规则：
+Batch-processing rules:
 
-- 游戏名分别写入 `Delta Force` 与 `三角洲行动`；训练器列表标题使用 `Delta Force · <weapon>`（EN）和 `三角洲·<weapon>`（CN）。中点不会在卡片字体中显示成类似“丨/I”的竖线。Workshop 标题对应为 `Delta Force · <weapon> Recoil` 和 `三角洲·<weapon> 后坐力`，武器字段本身仍只保存枪名。
-- 93R、G18 使用 1×；其他枪械使用 2×。
-- QBZ95-1 的重建 pitch 除以 `0.89`；其他枪械的幅度不修正。
-- 所有配置使用 `spline`、平滑强度 `0.2`，并调用 Recoil Trainer 的 Auto Segment。
-- `--resume` 只复用仍能通过当前流水线版本和全部质量检查的输出。
-- `--convert-only` 复用已验证的 CSV/summary，只重建 JSON；适用于批量修改标题或其他 Profile 元数据。
-- 导入前要求 `RecoilTrainer.exe` 未运行，并自动备份数据库和整个 profiles 目录到 `%LOCALAPPDATA%\RecoilTrainer\codex_backups`。
+- Game names are stored as `Delta Force` and `三角洲行动`. Trainer list titles use `Delta Force · <weapon>` in English and `三角洲·<weapon>` in Chinese. The middle dot avoids appearing like a vertical `|` or `I` in card fonts. Workshop titles use `Delta Force · <weapon> Recoil` and `三角洲·<weapon> 后坐力`; the weapon field itself still stores only the weapon name.
+- The 93R and G18 use 1x; all other weapons use 2x.
+- The reconstructed pitch for the QBZ95-1 is divided by `0.89`; no amplitude correction is applied to other weapons.
+- Every profile uses `spline` with a smoothing strength of `0.2` and calls Recoil Trainer's Auto Segment implementation.
+- `--resume` reuses only outputs that still pass the current pipeline version and all quality checks.
+- `--convert-only` reuses validated CSV and summary files and rebuilds only the JSON. This is useful when changing titles or other Profile metadata in bulk.
+- Before importing, `RecoilTrainer.exe` must not be running. The database and complete profiles directory are automatically backed up to `%LOCALAPPDATA%\RecoilTrainer\codex_backups`.
 
-批量结果写入 `delta_force_batch_output`。其中：
+Batch results are written to `delta_force_batch_output`, including:
 
-- `batch_manifest.json`：全部视频、弹匣数、帧范围、pitch、镜倍、修正系数、质量指标与最终 JSON 路径。
-- `steam_import_report.json`：本次导入的 43 个 profile ID、Steam 数据目录和可恢复备份位置。
-- 每把枪的子目录：完整分析中间产物、复核图、日志和双语 Recoil Trainer JSON。
+- `batch_manifest.json`: Every video, magazine count, frame range, pitch, optic magnification, correction factor, quality metrics, and final JSON path.
+- `steam_import_report.json`: The 43 profile IDs imported in this run, the Steam data directory, and the recoverable backup location.
+- One subdirectory per weapon containing all intermediate analysis artifacts, review images, logs, and bilingual Recoil Trainer JSON files.
 
-### 异常跳变审计
+### Discontinuity Audit
 
-自动弹药事件只负责粗定位射击区间。最终 `1 -> 0` 边界由“稳定空仓帧 + 全部弹药状态联合动态规划”确定，避免中途弱变化峰漏检后，把空仓动画误补成最后几发。
+Automatic ammo events are used only to locate the firing interval coarsely. The final `1 -> 0` boundary is determined by a stable empty-magazine frame plus joint dynamic programming across all ammo states. This prevents a missed weak change peak from causing the empty-magazine animation to be misinterpreted as the final few shots.
 
-CSV 始终保留 Feature Matching + RANSAC 与准星合成得到的原始 `recoil_*` 和 `shot_delta_*` 列。如果最后一个点同时满足以下条件，流程会把它识别为射击结束后的空仓/枪械下落动画，而不是新的后坐力脉冲：
+The CSV always preserves the original `recoil_*` and `shot_delta_*` columns produced by combining feature matching, RANSAC, and reticle detection. If the final point satisfies all the following conditions, the pipeline identifies it as an empty-magazine/weapon-drop animation after firing rather than a new recoil impulse:
 
-- 纵向突降超过 80 px；
-- 总位移超过 100 px；
-- 同时超过此前逐发位移中位数的 5 倍及 `median + 8 × robust_sigma`。
+- The vertical drop exceeds 80 px.
+- The total displacement exceeds 100 px.
+- The displacement also exceeds both five times the median previous per-shot displacement and `median + 8 x robust_sigma`.
 
-此时只在 `trainer_recoil_*` 列中，用最近可靠逐发增量的稳健中位数外推末发；原始观测不覆盖。`summary.json` 和最终 JSON 的 `data.reconstruction.trajectory_corrections` 会记录原始增量、替换增量、阈值和原因。中段的 burst 射击回正（例如 M16A4 三连发之间的长间隔）不会被这一规则修改。
+In this case, only the `trainer_recoil_*` columns extrapolate the last shot using the robust median of recent reliable per-shot increments; the original observation is not overwritten. `summary.json` and `data.reconstruction.trajectory_corrections` in the final JSON record the original increment, replacement increment, thresholds, and reason. Mid-sequence recoil recovery during burst fire, such as the long interval between M16A4 three-round bursts, is not modified by this rule.
 
-批量重跑会从上一份 `batch_manifest.json` 与 `steam_import_report.json` 恢复已导入的 Profile ID，因此 Steam 更新为原位覆盖，不会生成重复同名配置。
+Batch reruns restore previously imported Profile IDs from the previous `batch_manifest.json` and `steam_import_report.json`, so Steam profiles are updated in place instead of creating duplicate profiles with the same name.
