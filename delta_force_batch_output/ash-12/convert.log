@@ -1,0 +1,13 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\convert_to_recoiltrainer.py C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ash-12\keyframes_recoil.csv --output C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ash-12\ash-12_recoiltrainer.json --name "Delta Force · ASH-12" --localized-name-en "Delta Force · ASH-12" --localized-name-zh-cn 三角洲·ASH-12 --weapon-name-en ASH-12 --weapon-name-zh-cn ASH-12 --game-name-en "Delta Force" --game-name-zh-cn 三角洲行动 --workshop-title-en "Delta Force · ASH-12 Recoil" --workshop-title-zh-cn "三角洲·ASH-12 后坐力" --scope-magnification 2.0 --recoil-amplitude-divisor 1.0 --smoothing spline --smoothing-strength 0.2 --segmentation recoil-trainer --tags "game:delta-force,Delta Force,weapon:ASH-12,video-reconstruction,scope:2x" --recoil-trainer-root C:\XiaodeDocuments\Programs\RecoilTrainer --profile-id 542ec8f4246c1390ea221bb2a4af384d
+
+STDOUT
+Wrote: C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ash-12\ash-12_recoiltrainer.json
+Profile: Delta Force · ASH-12 (542ec8f4246c1390ea221bb2a4af384d)
+Shots: 30, duration: 3492 ms, FPS: 120.0
+Source span: x=150.048px, y=1138.346px; uniform scale=0.210832128
+Recorded pitch: 37.409247 deg (summary.json FOV/scope estimate)
+Smoothing: spline 0.200; segments: 7 (recoil-trainer)
+Recoil Trainer model validation: passed
+
+STDERR

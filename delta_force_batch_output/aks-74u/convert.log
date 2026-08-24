@@ -1,0 +1,13 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\convert_to_recoiltrainer.py C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aks-74u\keyframes_recoil.csv --output C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aks-74u\aks-74u_recoiltrainer.json --name "Delta Force · AKS-74U" --localized-name-en "Delta Force · AKS-74U" --localized-name-zh-cn 三角洲·AKS-74U --weapon-name-en AKS-74U --weapon-name-zh-cn AKS-74U --game-name-en "Delta Force" --game-name-zh-cn 三角洲行动 --workshop-title-en "Delta Force · AKS-74U Recoil" --workshop-title-zh-cn "三角洲·AKS-74U 后坐力" --scope-magnification 2.0 --recoil-amplitude-divisor 1.0 --smoothing spline --smoothing-strength 0.2 --segmentation recoil-trainer --tags "game:delta-force,Delta Force,weapon:AKS-74U,video-reconstruction,scope:2x" --recoil-trainer-root C:\XiaodeDocuments\Programs\RecoilTrainer --profile-id 54b600ca7b04baf2927250dfbea1e093
+
+STDOUT
+Wrote: C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aks-74u\aks-74u_recoiltrainer.json
+Profile: Delta Force · AKS-74U (54b600ca7b04baf2927250dfbea1e093)
+Shots: 75, duration: 8342 ms, FPS: 120.0
+Source span: x=97.673px, y=1290.598px; uniform scale=0.185960280
+Recorded pitch: 41.454815 deg (summary.json FOV/scope estimate)
+Smoothing: spline 0.200; segments: 16 (recoil-trainer)
+Recoil Trainer model validation: passed
+
+STDERR

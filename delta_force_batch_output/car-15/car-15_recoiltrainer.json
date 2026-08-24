@@ -1,0 +1,525 @@
+{
+  "profile_id": "bc7371618a3afad6139a7b1e8792a37d",
+  "name": "Delta Force · CAR-15",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 99.854103,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 96.48664,
+      "y": 94.550585,
+      "t_ms": 83
+    },
+    {
+      "shot_index": 2,
+      "x": 94.258006,
+      "y": 101.729362,
+      "t_ms": 175
+    },
+    {
+      "shot_index": 3,
+      "x": 93.481003,
+      "y": 106.100811,
+      "t_ms": 267
+    },
+    {
+      "shot_index": 4,
+      "x": 95.072918,
+      "y": 112.794607,
+      "t_ms": 358
+    },
+    {
+      "shot_index": 5,
+      "x": 92.872498,
+      "y": 120.03917,
+      "t_ms": 458
+    },
+    {
+      "shot_index": 6,
+      "x": 93.325403,
+      "y": 123.879245,
+      "t_ms": 550
+    },
+    {
+      "shot_index": 7,
+      "x": 90.0,
+      "y": 129.701148,
+      "t_ms": 650
+    },
+    {
+      "shot_index": 8,
+      "x": 94.678275,
+      "y": 134.599372,
+      "t_ms": 742
+    },
+    {
+      "shot_index": 9,
+      "x": 92.888757,
+      "y": 141.302304,
+      "t_ms": 842
+    },
+    {
+      "shot_index": 10,
+      "x": 96.910075,
+      "y": 147.762892,
+      "t_ms": 933
+    },
+    {
+      "shot_index": 11,
+      "x": 98.414262,
+      "y": 149.723684,
+      "t_ms": 1025
+    },
+    {
+      "shot_index": 12,
+      "x": 99.083293,
+      "y": 155.372267,
+      "t_ms": 1117
+    },
+    {
+      "shot_index": 13,
+      "x": 105.848299,
+      "y": 162.128617,
+      "t_ms": 1217
+    },
+    {
+      "shot_index": 14,
+      "x": 105.723703,
+      "y": 163.642203,
+      "t_ms": 1308
+    },
+    {
+      "shot_index": 15,
+      "x": 110.189303,
+      "y": 168.88499,
+      "t_ms": 1408
+    },
+    {
+      "shot_index": 16,
+      "x": 115.661775,
+      "y": 172.560545,
+      "t_ms": 1508
+    },
+    {
+      "shot_index": 17,
+      "x": 117.7105,
+      "y": 178.401316,
+      "t_ms": 1592
+    },
+    {
+      "shot_index": 18,
+      "x": 120.142434,
+      "y": 183.838346,
+      "t_ms": 1692
+    },
+    {
+      "shot_index": 19,
+      "x": 122.121977,
+      "y": 189.69898,
+      "t_ms": 1783
+    },
+    {
+      "shot_index": 20,
+      "x": 124.381755,
+      "y": 192.769392,
+      "t_ms": 1883
+    },
+    {
+      "shot_index": 21,
+      "x": 122.473812,
+      "y": 200.011732,
+      "t_ms": 1975
+    },
+    {
+      "shot_index": 22,
+      "x": 125.945839,
+      "y": 207.636125,
+      "t_ms": 2067
+    },
+    {
+      "shot_index": 23,
+      "x": 121.780561,
+      "y": 213.484391,
+      "t_ms": 2158
+    },
+    {
+      "shot_index": 24,
+      "x": 122.029381,
+      "y": 221.087994,
+      "t_ms": 2267
+    },
+    {
+      "shot_index": 25,
+      "x": 124.944277,
+      "y": 222.528394,
+      "t_ms": 2350
+    },
+    {
+      "shot_index": 26,
+      "x": 121.416789,
+      "y": 228.36601,
+      "t_ms": 2442
+    },
+    {
+      "shot_index": 27,
+      "x": 124.096572,
+      "y": 232.523249,
+      "t_ms": 2542
+    },
+    {
+      "shot_index": 28,
+      "x": 124.969017,
+      "y": 239.319372,
+      "t_ms": 2633
+    },
+    {
+      "shot_index": 29,
+      "x": 129.668218,
+      "y": 238.62032,
+      "t_ms": 2733
+    },
+    {
+      "shot_index": 30,
+      "x": 122.406202,
+      "y": 238.304822,
+      "t_ms": 2825
+    },
+    {
+      "shot_index": 31,
+      "x": 121.192913,
+      "y": 256.257157,
+      "t_ms": 2917
+    },
+    {
+      "shot_index": 32,
+      "x": 122.165785,
+      "y": 256.472456,
+      "t_ms": 3017
+    },
+    {
+      "shot_index": 33,
+      "x": 126.512475,
+      "y": 259.277043,
+      "t_ms": 3108
+    },
+    {
+      "shot_index": 34,
+      "x": 124.755988,
+      "y": 255.558104,
+      "t_ms": 3200
+    },
+    {
+      "shot_index": 35,
+      "x": 123.737576,
+      "y": 264.350806,
+      "t_ms": 3300
+    },
+    {
+      "shot_index": 36,
+      "x": 125.111634,
+      "y": 255.245495,
+      "t_ms": 3392
+    },
+    {
+      "shot_index": 37,
+      "x": 124.035353,
+      "y": 268.722799,
+      "t_ms": 3492
+    },
+    {
+      "shot_index": 38,
+      "x": 122.22212,
+      "y": 273.429723,
+      "t_ms": 3583
+    },
+    {
+      "shot_index": 39,
+      "x": 123.657701,
+      "y": 276.852982,
+      "t_ms": 3683
+    },
+    {
+      "shot_index": 40,
+      "x": 121.934666,
+      "y": 280.967629,
+      "t_ms": 3775
+    },
+    {
+      "shot_index": 41,
+      "x": 124.730256,
+      "y": 282.00259,
+      "t_ms": 3867
+    },
+    {
+      "shot_index": 42,
+      "x": 121.905847,
+      "y": 286.974874,
+      "t_ms": 3967
+    },
+    {
+      "shot_index": 43,
+      "x": 121.712399,
+      "y": 288.364693,
+      "t_ms": 4058
+    },
+    {
+      "shot_index": 44,
+      "x": 121.156662,
+      "y": 292.439307,
+      "t_ms": 4150
+    },
+    {
+      "shot_index": 45,
+      "x": 119.631733,
+      "y": 295.765826,
+      "t_ms": 4250
+    },
+    {
+      "shot_index": 46,
+      "x": 115.667353,
+      "y": 297.732414,
+      "t_ms": 4342
+    },
+    {
+      "shot_index": 47,
+      "x": 119.815745,
+      "y": 299.739962,
+      "t_ms": 4433
+    },
+    {
+      "shot_index": 48,
+      "x": 117.878907,
+      "y": 303.238865,
+      "t_ms": 4533
+    },
+    {
+      "shot_index": 49,
+      "x": 122.178607,
+      "y": 306.403584,
+      "t_ms": 4625
+    },
+    {
+      "shot_index": 50,
+      "x": 116.191558,
+      "y": 305.377323,
+      "t_ms": 4717
+    },
+    {
+      "shot_index": 51,
+      "x": 119.969846,
+      "y": 308.879676,
+      "t_ms": 4808
+    },
+    {
+      "shot_index": 52,
+      "x": 115.012941,
+      "y": 314.570376,
+      "t_ms": 4908
+    },
+    {
+      "shot_index": 53,
+      "x": 116.091485,
+      "y": 316.488934,
+      "t_ms": 5008
+    },
+    {
+      "shot_index": 54,
+      "x": 118.691267,
+      "y": 319.668723,
+      "t_ms": 5100
+    },
+    {
+      "shot_index": 55,
+      "x": 119.78934,
+      "y": 320.907054,
+      "t_ms": 5192
+    },
+    {
+      "shot_index": 56,
+      "x": 119.246818,
+      "y": 329.547783,
+      "t_ms": 5292
+    },
+    {
+      "shot_index": 57,
+      "x": 118.509325,
+      "y": 330.0,
+      "t_ms": 5383
+    },
+    {
+      "shot_index": 58,
+      "x": 116.198954,
+      "y": 329.218852,
+      "t_ms": 5475
+    },
+    {
+      "shot_index": 59,
+      "x": 115.27425,
+      "y": 329.05834,
+      "t_ms": 5575
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 5
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 6,
+      "end_shot": 6
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 7,
+      "end_shot": 7
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 8,
+      "end_shot": 22
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 23,
+      "end_shot": 24
+    },
+    {
+      "segment_id": "Seq6",
+      "start_shot": 25,
+      "end_shot": 29
+    },
+    {
+      "segment_id": "Seq7",
+      "start_shot": 30,
+      "end_shot": 32
+    },
+    {
+      "segment_id": "Seq8",
+      "start_shot": 33,
+      "end_shot": 35
+    },
+    {
+      "segment_id": "Seq9",
+      "start_shot": 36,
+      "end_shot": 38
+    },
+    {
+      "segment_id": "Seq10",
+      "start_shot": 39,
+      "end_shot": 39
+    },
+    {
+      "segment_id": "Seq11",
+      "start_shot": 40,
+      "end_shot": 40
+    },
+    {
+      "segment_id": "Seq12",
+      "start_shot": 41,
+      "end_shot": 41
+    },
+    {
+      "segment_id": "Seq13",
+      "start_shot": 42,
+      "end_shot": 46
+    },
+    {
+      "segment_id": "Seq14",
+      "start_shot": 47,
+      "end_shot": 47
+    },
+    {
+      "segment_id": "Seq15",
+      "start_shot": 48,
+      "end_shot": 48
+    },
+    {
+      "segment_id": "Seq16",
+      "start_shot": 49,
+      "end_shot": 49
+    },
+    {
+      "segment_id": "Seq17",
+      "start_shot": 50,
+      "end_shot": 50
+    },
+    {
+      "segment_id": "Seq18",
+      "start_shot": 51,
+      "end_shot": 51
+    },
+    {
+      "segment_id": "Seq19",
+      "start_shot": 52,
+      "end_shot": 52
+    },
+    {
+      "segment_id": "Seq20",
+      "start_shot": 53,
+      "end_shot": 55
+    },
+    {
+      "segment_id": "Seq21",
+      "start_shot": 56,
+      "end_shot": 59
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 33.3925087921656,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:19:36.437066+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:CAR-15",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · CAR-15",
+    "zh-CN": "三角洲·CAR-15"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "CAR-15",
+  "workshop_title": "Delta Force · CAR-15 Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "CAR-15",
+        "workshop_title": "Delta Force · CAR-15 Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "CAR-15",
+        "workshop_title": "三角洲·CAR-15 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

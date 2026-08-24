@@ -1,0 +1,335 @@
+{
+  "profile_id": "22ea22bc948b99d61060588d655158c8",
+  "name": "Delta Force · SMG-45",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 98.319796,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 98.616176,
+      "y": 98.664807,
+      "t_ms": 100
+    },
+    {
+      "shot_index": 2,
+      "x": 98.137344,
+      "y": 106.714815,
+      "t_ms": 200
+    },
+    {
+      "shot_index": 3,
+      "x": 99.304678,
+      "y": 114.454557,
+      "t_ms": 300
+    },
+    {
+      "shot_index": 4,
+      "x": 96.828179,
+      "y": 121.576189,
+      "t_ms": 408
+    },
+    {
+      "shot_index": 5,
+      "x": 95.171256,
+      "y": 127.461404,
+      "t_ms": 500
+    },
+    {
+      "shot_index": 6,
+      "x": 95.531763,
+      "y": 133.361123,
+      "t_ms": 592
+    },
+    {
+      "shot_index": 7,
+      "x": 90.0,
+      "y": 135.63912,
+      "t_ms": 692
+    },
+    {
+      "shot_index": 8,
+      "x": 91.574798,
+      "y": 132.365988,
+      "t_ms": 792
+    },
+    {
+      "shot_index": 9,
+      "x": 93.286012,
+      "y": 147.324573,
+      "t_ms": 917
+    },
+    {
+      "shot_index": 10,
+      "x": 92.266435,
+      "y": 152.861036,
+      "t_ms": 1000
+    },
+    {
+      "shot_index": 11,
+      "x": 94.589033,
+      "y": 157.432946,
+      "t_ms": 1092
+    },
+    {
+      "shot_index": 12,
+      "x": 96.143323,
+      "y": 164.451196,
+      "t_ms": 1192
+    },
+    {
+      "shot_index": 13,
+      "x": 97.978255,
+      "y": 170.904993,
+      "t_ms": 1292
+    },
+    {
+      "shot_index": 14,
+      "x": 99.363252,
+      "y": 178.773162,
+      "t_ms": 1392
+    },
+    {
+      "shot_index": 15,
+      "x": 103.418506,
+      "y": 183.862977,
+      "t_ms": 1492
+    },
+    {
+      "shot_index": 16,
+      "x": 104.96633,
+      "y": 189.577155,
+      "t_ms": 1592
+    },
+    {
+      "shot_index": 17,
+      "x": 107.030156,
+      "y": 199.460999,
+      "t_ms": 1692
+    },
+    {
+      "shot_index": 18,
+      "x": 105.31002,
+      "y": 205.917837,
+      "t_ms": 1783
+    },
+    {
+      "shot_index": 19,
+      "x": 107.493931,
+      "y": 213.988847,
+      "t_ms": 1883
+    },
+    {
+      "shot_index": 20,
+      "x": 105.070674,
+      "y": 225.093333,
+      "t_ms": 1992
+    },
+    {
+      "shot_index": 21,
+      "x": 107.302366,
+      "y": 228.541003,
+      "t_ms": 2083
+    },
+    {
+      "shot_index": 22,
+      "x": 105.959205,
+      "y": 235.461945,
+      "t_ms": 2183
+    },
+    {
+      "shot_index": 23,
+      "x": 105.900155,
+      "y": 245.252972,
+      "t_ms": 2283
+    },
+    {
+      "shot_index": 24,
+      "x": 106.636115,
+      "y": 249.854186,
+      "t_ms": 2392
+    },
+    {
+      "shot_index": 25,
+      "x": 107.861514,
+      "y": 260.245666,
+      "t_ms": 2483
+    },
+    {
+      "shot_index": 26,
+      "x": 108.856855,
+      "y": 266.646722,
+      "t_ms": 2583
+    },
+    {
+      "shot_index": 27,
+      "x": 110.322944,
+      "y": 273.885185,
+      "t_ms": 2683
+    },
+    {
+      "shot_index": 28,
+      "x": 113.001311,
+      "y": 279.772728,
+      "t_ms": 2783
+    },
+    {
+      "shot_index": 29,
+      "x": 113.444013,
+      "y": 283.71997,
+      "t_ms": 2875
+    },
+    {
+      "shot_index": 30,
+      "x": 113.395022,
+      "y": 289.313254,
+      "t_ms": 2975
+    },
+    {
+      "shot_index": 31,
+      "x": 120.899728,
+      "y": 296.374257,
+      "t_ms": 3075
+    },
+    {
+      "shot_index": 32,
+      "x": 119.668146,
+      "y": 288.611794,
+      "t_ms": 3175
+    },
+    {
+      "shot_index": 33,
+      "x": 121.623392,
+      "y": 292.182369,
+      "t_ms": 3275
+    },
+    {
+      "shot_index": 34,
+      "x": 121.461689,
+      "y": 311.190661,
+      "t_ms": 3375
+    },
+    {
+      "shot_index": 35,
+      "x": 126.945677,
+      "y": 313.501509,
+      "t_ms": 3475
+    },
+    {
+      "shot_index": 36,
+      "x": 129.1781,
+      "y": 318.129584,
+      "t_ms": 3575
+    },
+    {
+      "shot_index": 37,
+      "x": 132.277087,
+      "y": 322.35177,
+      "t_ms": 3675
+    },
+    {
+      "shot_index": 38,
+      "x": 135.103875,
+      "y": 323.681396,
+      "t_ms": 3767
+    },
+    {
+      "shot_index": 39,
+      "x": 136.901467,
+      "y": 330.0,
+      "t_ms": 3867
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 1
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 2,
+      "end_shot": 8
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 9,
+      "end_shot": 19
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 20,
+      "end_shot": 20
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 21,
+      "end_shot": 21
+    },
+    {
+      "segment_id": "Seq6",
+      "start_shot": 22,
+      "end_shot": 22
+    },
+    {
+      "segment_id": "Seq7",
+      "start_shot": 23,
+      "end_shot": 39
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 29.847336150542798,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:19:55.911475+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:SMG-45",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · SMG-45",
+    "zh-CN": "三角洲·SMG-45"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "SMG-45",
+  "workshop_title": "Delta Force · SMG-45 Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "SMG-45",
+        "workshop_title": "Delta Force · SMG-45 Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "SMG-45",
+        "workshop_title": "三角洲·SMG-45 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

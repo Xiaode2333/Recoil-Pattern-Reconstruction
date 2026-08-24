@@ -1,0 +1,30 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\analyze_recoil.py D:\DF\Vector.mp4 --output-dir C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector --fov-deg 104 --fov-axis reference-horizontal --scope-magnification 2.0 --reticle-mode tick-lines --ammo-template-file C:\XiaodeDocuments\Programs\Recoil_Reconsturct\ammo_digit_templates.npz
+
+STDOUT
+[1/4] 视频 2560x1440 @ 120.000 fps；全片扫描弹药 ROI (2348, 1218, 2464, 1268) ...
+      自动识别: OCR 弹匣 70 发，约 7 帧/发，分析范围 [164, 675]
+      检出 70 个关键帧: [172, 179, 185, 192, 198, 205, 212, 218, 225, 231, 238, 245, 251, 258, 265, 272, 278, 285, 291, 298, 304, 311, 318, 325, 337, 344, 351, 358, 364, 371, 378, 385, 391, 399, 403, 412, 423, 432, 437, 445, 450, 457, 464, 470, 477, 483, 490, 497, 503, 510, 516, 523, 536, 542, 549, 556, 563, 570, 576, 583, 589, 602, 609, 615, 622, 629, 642, 651, 654, 668]
+[2/4] 镜外 Feature Matching + RANSAC（镜内/枪体/HUD/高亮火花已屏蔽）...
+      已处理 50/511 帧
+      已处理 100/511 帧
+      已处理 150/511 帧
+      已处理 200/511 帧
+      已处理 250/511 帧
+      已处理 300/511 帧
+      已处理 350/511 帧
+      已处理 400/511 帧
+      已处理 450/511 帧
+      已处理 500/511 帧
+[3/4] 合成准星实际交点与镜外相机变换，生成轨迹 ...
+[4/4] 完成。输出:
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\keyframes_recoil.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\all_frames_motion.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\summary.json
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\recoil_trajectory.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\reticle_keyframes_contact_sheet.jpg
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\feature_mask.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\ammo_detection.csv
+      自动估算最大 pitch: 42.9715° (FOV=104° reference-horizontal, 2x)
+
+STDERR

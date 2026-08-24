@@ -1,0 +1,445 @@
+{
+  "profile_id": "f945837dac8e5d6f109d305880262627",
+  "name": "Delta Force · MCX LT",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 95.501176,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 93.724341,
+      "y": 92.603341,
+      "t_ms": 75
+    },
+    {
+      "shot_index": 2,
+      "x": 94.224191,
+      "y": 98.059349,
+      "t_ms": 150
+    },
+    {
+      "shot_index": 3,
+      "x": 93.814441,
+      "y": 99.854566,
+      "t_ms": 217
+    },
+    {
+      "shot_index": 4,
+      "x": 91.390794,
+      "y": 102.469812,
+      "t_ms": 283
+    },
+    {
+      "shot_index": 5,
+      "x": 92.787403,
+      "y": 108.333622,
+      "t_ms": 358
+    },
+    {
+      "shot_index": 6,
+      "x": 90.901645,
+      "y": 110.985183,
+      "t_ms": 433
+    },
+    {
+      "shot_index": 7,
+      "x": 90.701705,
+      "y": 113.218017,
+      "t_ms": 500
+    },
+    {
+      "shot_index": 8,
+      "x": 90.969981,
+      "y": 120.277905,
+      "t_ms": 575
+    },
+    {
+      "shot_index": 9,
+      "x": 90.0,
+      "y": 125.418582,
+      "t_ms": 650
+    },
+    {
+      "shot_index": 10,
+      "x": 92.754047,
+      "y": 129.62991,
+      "t_ms": 717
+    },
+    {
+      "shot_index": 11,
+      "x": 91.13497,
+      "y": 134.02411,
+      "t_ms": 783
+    },
+    {
+      "shot_index": 12,
+      "x": 94.547682,
+      "y": 141.181658,
+      "t_ms": 858
+    },
+    {
+      "shot_index": 13,
+      "x": 94.670818,
+      "y": 147.241923,
+      "t_ms": 933
+    },
+    {
+      "shot_index": 14,
+      "x": 94.676449,
+      "y": 151.987923,
+      "t_ms": 1000
+    },
+    {
+      "shot_index": 15,
+      "x": 95.721176,
+      "y": 162.439944,
+      "t_ms": 1075
+    },
+    {
+      "shot_index": 16,
+      "x": 94.777672,
+      "y": 168.046451,
+      "t_ms": 1142
+    },
+    {
+      "shot_index": 17,
+      "x": 97.248973,
+      "y": 176.728737,
+      "t_ms": 1217
+    },
+    {
+      "shot_index": 18,
+      "x": 95.310275,
+      "y": 182.483635,
+      "t_ms": 1283
+    },
+    {
+      "shot_index": 19,
+      "x": 95.57791,
+      "y": 189.766036,
+      "t_ms": 1358
+    },
+    {
+      "shot_index": 20,
+      "x": 97.797662,
+      "y": 195.312047,
+      "t_ms": 1425
+    },
+    {
+      "shot_index": 21,
+      "x": 95.813692,
+      "y": 199.988672,
+      "t_ms": 1500
+    },
+    {
+      "shot_index": 22,
+      "x": 92.873725,
+      "y": 207.475106,
+      "t_ms": 1567
+    },
+    {
+      "shot_index": 23,
+      "x": 94.192445,
+      "y": 210.324538,
+      "t_ms": 1642
+    },
+    {
+      "shot_index": 24,
+      "x": 92.226404,
+      "y": 214.203811,
+      "t_ms": 1717
+    },
+    {
+      "shot_index": 25,
+      "x": 92.056374,
+      "y": 210.001456,
+      "t_ms": 1783
+    },
+    {
+      "shot_index": 26,
+      "x": 91.623277,
+      "y": 221.226114,
+      "t_ms": 1850
+    },
+    {
+      "shot_index": 27,
+      "x": 90.735354,
+      "y": 223.724404,
+      "t_ms": 1925
+    },
+    {
+      "shot_index": 28,
+      "x": 90.33646,
+      "y": 225.262317,
+      "t_ms": 1992
+    },
+    {
+      "shot_index": 29,
+      "x": 91.511868,
+      "y": 231.8352,
+      "t_ms": 2067
+    },
+    {
+      "shot_index": 30,
+      "x": 90.629541,
+      "y": 231.898824,
+      "t_ms": 2142
+    },
+    {
+      "shot_index": 31,
+      "x": 94.554441,
+      "y": 234.941472,
+      "t_ms": 2208
+    },
+    {
+      "shot_index": 32,
+      "x": 96.264433,
+      "y": 238.824539,
+      "t_ms": 2283
+    },
+    {
+      "shot_index": 33,
+      "x": 96.329617,
+      "y": 242.315257,
+      "t_ms": 2358
+    },
+    {
+      "shot_index": 34,
+      "x": 94.456976,
+      "y": 239.463875,
+      "t_ms": 2425
+    },
+    {
+      "shot_index": 35,
+      "x": 97.602336,
+      "y": 248.877624,
+      "t_ms": 2500
+    },
+    {
+      "shot_index": 36,
+      "x": 98.07789,
+      "y": 243.611728,
+      "t_ms": 2567
+    },
+    {
+      "shot_index": 37,
+      "x": 100.359054,
+      "y": 255.084628,
+      "t_ms": 2642
+    },
+    {
+      "shot_index": 38,
+      "x": 99.750356,
+      "y": 258.720403,
+      "t_ms": 2708
+    },
+    {
+      "shot_index": 39,
+      "x": 103.906174,
+      "y": 261.218762,
+      "t_ms": 2783
+    },
+    {
+      "shot_index": 40,
+      "x": 105.439287,
+      "y": 264.212127,
+      "t_ms": 2850
+    },
+    {
+      "shot_index": 41,
+      "x": 106.988616,
+      "y": 267.936628,
+      "t_ms": 2925
+    },
+    {
+      "shot_index": 42,
+      "x": 108.525968,
+      "y": 271.835185,
+      "t_ms": 2992
+    },
+    {
+      "shot_index": 43,
+      "x": 108.233438,
+      "y": 277.381168,
+      "t_ms": 3075
+    },
+    {
+      "shot_index": 44,
+      "x": 112.335384,
+      "y": 279.448127,
+      "t_ms": 3142
+    },
+    {
+      "shot_index": 45,
+      "x": 108.779333,
+      "y": 283.230331,
+      "t_ms": 3208
+    },
+    {
+      "shot_index": 46,
+      "x": 112.146722,
+      "y": 287.163328,
+      "t_ms": 3283
+    },
+    {
+      "shot_index": 47,
+      "x": 113.611345,
+      "y": 287.067126,
+      "t_ms": 3350
+    },
+    {
+      "shot_index": 48,
+      "x": 115.478359,
+      "y": 292.118473,
+      "t_ms": 3425
+    },
+    {
+      "shot_index": 49,
+      "x": 115.578461,
+      "y": 295.061896,
+      "t_ms": 3492
+    },
+    {
+      "shot_index": 50,
+      "x": 116.345503,
+      "y": 300.18866,
+      "t_ms": 3567
+    },
+    {
+      "shot_index": 51,
+      "x": 116.069773,
+      "y": 304.875047,
+      "t_ms": 3642
+    },
+    {
+      "shot_index": 52,
+      "x": 117.803845,
+      "y": 305.763039,
+      "t_ms": 3708
+    },
+    {
+      "shot_index": 53,
+      "x": 121.488715,
+      "y": 311.012299,
+      "t_ms": 3783
+    },
+    {
+      "shot_index": 54,
+      "x": 120.139347,
+      "y": 313.113972,
+      "t_ms": 3850
+    },
+    {
+      "shot_index": 55,
+      "x": 121.456242,
+      "y": 315.359929,
+      "t_ms": 3925
+    },
+    {
+      "shot_index": 56,
+      "x": 124.551279,
+      "y": 322.959561,
+      "t_ms": 4067
+    },
+    {
+      "shot_index": 57,
+      "x": 124.329804,
+      "y": 328.668171,
+      "t_ms": 4142
+    },
+    {
+      "shot_index": 58,
+      "x": 126.775316,
+      "y": 330.0,
+      "t_ms": 4208
+    },
+    {
+      "shot_index": 59,
+      "x": 123.686513,
+      "y": 328.758195,
+      "t_ms": 4308
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 8
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 9,
+      "end_shot": 19
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 20,
+      "end_shot": 28
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 29,
+      "end_shot": 58
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 59,
+      "end_shot": 59
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 46.31466416962329,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:19:46.350114+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:MCX LT",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · MCX LT",
+    "zh-CN": "三角洲·MCX LT"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "MCX LT",
+  "workshop_title": "Delta Force · MCX LT Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "MCX LT",
+        "workshop_title": "Delta Force · MCX LT Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "MCX LT",
+        "workshop_title": "三角洲·MCX LT 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

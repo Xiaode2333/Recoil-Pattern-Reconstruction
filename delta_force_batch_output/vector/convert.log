@@ -1,0 +1,13 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\convert_to_recoiltrainer.py C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\keyframes_recoil.csv --output C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\vector_recoiltrainer.json --name "Delta Force · Vector" --localized-name-en "Delta Force · Vector" --localized-name-zh-cn 三角洲·Vector --weapon-name-en Vector --weapon-name-zh-cn Vector --game-name-en "Delta Force" --game-name-zh-cn 三角洲行动 --workshop-title-en "Delta Force · Vector Recoil" --workshop-title-zh-cn "三角洲·Vector 后坐力" --scope-magnification 2.0 --recoil-amplitude-divisor 1.0 --smoothing spline --smoothing-strength 0.2 --segmentation recoil-trainer --tags "game:delta-force,Delta Force,weapon:Vector,video-reconstruction,scope:2x" --recoil-trainer-root C:\XiaodeDocuments\Programs\RecoilTrainer --profile-id a5c930910a22b6f1192fee4278e87898
+
+STDOUT
+Wrote: C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\vector\vector_recoiltrainer.json
+Profile: Delta Force · Vector (a5c930910a22b6f1192fee4278e87898)
+Shots: 70, duration: 4133 ms, FPS: 120.0
+Source span: x=101.670px, y=1400.957px; uniform scale=0.171311467
+Recorded pitch: 42.971479 deg (summary.json FOV/scope estimate)
+Smoothing: spline 0.200; segments: 13 (recoil-trainer)
+Recoil Trainer model validation: passed
+
+STDERR

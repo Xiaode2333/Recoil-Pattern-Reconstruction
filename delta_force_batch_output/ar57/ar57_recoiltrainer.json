@@ -1,0 +1,405 @@
+{
+  "profile_id": "a20936947fc231f6ea0fe816da953771",
+  "name": "Delta Force · AR57",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 90.0,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 90.422557,
+      "y": 93.794874,
+      "t_ms": 67
+    },
+    {
+      "shot_index": 2,
+      "x": 91.889579,
+      "y": 96.052135,
+      "t_ms": 125
+    },
+    {
+      "shot_index": 3,
+      "x": 94.297346,
+      "y": 102.435308,
+      "t_ms": 200
+    },
+    {
+      "shot_index": 4,
+      "x": 92.334331,
+      "y": 102.196704,
+      "t_ms": 258
+    },
+    {
+      "shot_index": 5,
+      "x": 95.178227,
+      "y": 108.366994,
+      "t_ms": 333
+    },
+    {
+      "shot_index": 6,
+      "x": 96.278338,
+      "y": 113.060555,
+      "t_ms": 400
+    },
+    {
+      "shot_index": 7,
+      "x": 100.043573,
+      "y": 116.449411,
+      "t_ms": 467
+    },
+    {
+      "shot_index": 8,
+      "x": 100.420361,
+      "y": 117.317436,
+      "t_ms": 533
+    },
+    {
+      "shot_index": 9,
+      "x": 101.555671,
+      "y": 119.591105,
+      "t_ms": 592
+    },
+    {
+      "shot_index": 10,
+      "x": 102.78685,
+      "y": 126.595055,
+      "t_ms": 667
+    },
+    {
+      "shot_index": 11,
+      "x": 104.072544,
+      "y": 125.875086,
+      "t_ms": 725
+    },
+    {
+      "shot_index": 12,
+      "x": 103.248238,
+      "y": 133.132415,
+      "t_ms": 800
+    },
+    {
+      "shot_index": 13,
+      "x": 100.417407,
+      "y": 133.167124,
+      "t_ms": 867
+    },
+    {
+      "shot_index": 14,
+      "x": 99.216296,
+      "y": 140.952355,
+      "t_ms": 933
+    },
+    {
+      "shot_index": 15,
+      "x": 94.85876,
+      "y": 143.980747,
+      "t_ms": 1000
+    },
+    {
+      "shot_index": 16,
+      "x": 97.885177,
+      "y": 146.108029,
+      "t_ms": 1058
+    },
+    {
+      "shot_index": 17,
+      "x": 98.491555,
+      "y": 154.203947,
+      "t_ms": 1133
+    },
+    {
+      "shot_index": 18,
+      "x": 103.113504,
+      "y": 154.876008,
+      "t_ms": 1192
+    },
+    {
+      "shot_index": 19,
+      "x": 107.353428,
+      "y": 161.81693,
+      "t_ms": 1267
+    },
+    {
+      "shot_index": 20,
+      "x": 107.003248,
+      "y": 164.885081,
+      "t_ms": 1333
+    },
+    {
+      "shot_index": 21,
+      "x": 105.139238,
+      "y": 166.538448,
+      "t_ms": 1392
+    },
+    {
+      "shot_index": 22,
+      "x": 98.181158,
+      "y": 173.385238,
+      "t_ms": 1467
+    },
+    {
+      "shot_index": 23,
+      "x": 98.603588,
+      "y": 176.537015,
+      "t_ms": 1525
+    },
+    {
+      "shot_index": 24,
+      "x": 95.762069,
+      "y": 182.218964,
+      "t_ms": 1592
+    },
+    {
+      "shot_index": 25,
+      "x": 91.420211,
+      "y": 187.227492,
+      "t_ms": 1658
+    },
+    {
+      "shot_index": 26,
+      "x": 95.081218,
+      "y": 191.801733,
+      "t_ms": 1725
+    },
+    {
+      "shot_index": 27,
+      "x": 97.805739,
+      "y": 196.29061,
+      "t_ms": 1792
+    },
+    {
+      "shot_index": 28,
+      "x": 102.6619,
+      "y": 202.153511,
+      "t_ms": 1858
+    },
+    {
+      "shot_index": 29,
+      "x": 104.409777,
+      "y": 207.537733,
+      "t_ms": 1925
+    },
+    {
+      "shot_index": 30,
+      "x": 107.493814,
+      "y": 213.209681,
+      "t_ms": 1992
+    },
+    {
+      "shot_index": 31,
+      "x": 112.456192,
+      "y": 218.700535,
+      "t_ms": 2058
+    },
+    {
+      "shot_index": 32,
+      "x": 115.58061,
+      "y": 226.042052,
+      "t_ms": 2133
+    },
+    {
+      "shot_index": 33,
+      "x": 116.995166,
+      "y": 229.07578,
+      "t_ms": 2192
+    },
+    {
+      "shot_index": 34,
+      "x": 120.753407,
+      "y": 235.596719,
+      "t_ms": 2258
+    },
+    {
+      "shot_index": 35,
+      "x": 125.71748,
+      "y": 247.108708,
+      "t_ms": 2333
+    },
+    {
+      "shot_index": 36,
+      "x": 127.069692,
+      "y": 248.146967,
+      "t_ms": 2392
+    },
+    {
+      "shot_index": 37,
+      "x": 124.65711,
+      "y": 254.592876,
+      "t_ms": 2467
+    },
+    {
+      "shot_index": 38,
+      "x": 121.408575,
+      "y": 257.363629,
+      "t_ms": 2525
+    },
+    {
+      "shot_index": 39,
+      "x": 115.872173,
+      "y": 264.461129,
+      "t_ms": 2600
+    },
+    {
+      "shot_index": 40,
+      "x": 113.06717,
+      "y": 269.271181,
+      "t_ms": 2658
+    },
+    {
+      "shot_index": 41,
+      "x": 121.249129,
+      "y": 280.899498,
+      "t_ms": 2792
+    },
+    {
+      "shot_index": 42,
+      "x": 124.670189,
+      "y": 289.729117,
+      "t_ms": 2867
+    },
+    {
+      "shot_index": 43,
+      "x": 127.960992,
+      "y": 293.815264,
+      "t_ms": 2925
+    },
+    {
+      "shot_index": 44,
+      "x": 125.8741,
+      "y": 305.47791,
+      "t_ms": 3042
+    },
+    {
+      "shot_index": 45,
+      "x": 120.099462,
+      "y": 309.124126,
+      "t_ms": 3125
+    },
+    {
+      "shot_index": 46,
+      "x": 117.254011,
+      "y": 316.105034,
+      "t_ms": 3192
+    },
+    {
+      "shot_index": 47,
+      "x": 112.632086,
+      "y": 320.830246,
+      "t_ms": 3258
+    },
+    {
+      "shot_index": 48,
+      "x": 116.370168,
+      "y": 328.619228,
+      "t_ms": 3358
+    },
+    {
+      "shot_index": 49,
+      "x": 122.039076,
+      "y": 330.0,
+      "t_ms": 3408
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 11
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 12,
+      "end_shot": 15
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 16,
+      "end_shot": 19
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 20,
+      "end_shot": 25
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 26,
+      "end_shot": 36
+    },
+    {
+      "segment_id": "Seq6",
+      "start_shot": 37,
+      "end_shot": 40
+    },
+    {
+      "segment_id": "Seq7",
+      "start_shot": 41,
+      "end_shot": 43
+    },
+    {
+      "segment_id": "Seq8",
+      "start_shot": 44,
+      "end_shot": 47
+    },
+    {
+      "segment_id": "Seq9",
+      "start_shot": 48,
+      "end_shot": 49
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 39.48463748179277,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:19:33.379126+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:AR57",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · AR57",
+    "zh-CN": "三角洲·AR57"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "AR57",
+  "workshop_title": "Delta Force · AR57 Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "AR57",
+        "workshop_title": "Delta Force · AR57 Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "AR57",
+        "workshop_title": "三角洲·AR57 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

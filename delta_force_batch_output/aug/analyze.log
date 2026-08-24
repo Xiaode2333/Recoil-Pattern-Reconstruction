@@ -1,0 +1,33 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\analyze_recoil.py D:\DF\AUG.mp4 --output-dir C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aug --fov-deg 104 --fov-axis reference-horizontal --scope-magnification 2.0 --reticle-mode tick-lines --ammo-template-file C:\XiaodeDocuments\Programs\Recoil_Reconsturct\ammo_digit_templates.npz
+
+STDOUT
+[1/4] 视频 2560x1440 @ 120.000 fps；全片扫描弹药 ROI (2348, 1218, 2464, 1268) ...
+      自动识别: OCR 弹匣 60 发，约 11 帧/发，分析范围 [198, 867]
+      检出 60 个关键帧: [210, 221, 232, 241, 252, 263, 273, 284, 295, 305, 316, 326, 337, 348, 358, 369, 379, 390, 400, 411, 422, 433, 444, 453, 465, 475, 486, 497, 510, 522, 531, 546, 560, 570, 580, 588, 601, 613, 623, 635, 644, 655, 665, 677, 687, 698, 708, 719, 730, 739, 750, 762, 777, 793, 803, 814, 824, 835, 849, 860]
+[2/4] 镜外 Feature Matching + RANSAC（镜内/枪体/HUD/高亮火花已屏蔽）...
+      已处理 50/673 帧
+      已处理 100/673 帧
+      已处理 150/673 帧
+      已处理 200/673 帧
+      已处理 250/673 帧
+      已处理 300/673 帧
+      已处理 350/673 帧
+      已处理 400/673 帧
+      已处理 450/673 帧
+      已处理 500/673 帧
+      已处理 550/673 帧
+      已处理 600/673 帧
+      已处理 650/673 帧
+[3/4] 合成准星实际交点与镜外相机变换，生成轨迹 ...
+[4/4] 完成。输出:
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aug\keyframes_recoil.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aug\all_frames_motion.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aug\summary.json
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aug\recoil_trajectory.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aug\reticle_keyframes_contact_sheet.jpg
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aug\feature_mask.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\aug\ammo_detection.csv
+      自动估算最大 pitch: 32.8081° (FOV=104° reference-horizontal, 2x)
+
+STDERR

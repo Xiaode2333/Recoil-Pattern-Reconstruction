@@ -1,0 +1,28 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\analyze_recoil.py D:\DF\SR-3M.mp4 --output-dir C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\sr-3m --fov-deg 104 --fov-axis reference-horizontal --scope-magnification 2.0 --reticle-mode tick-lines --ammo-template-file C:\XiaodeDocuments\Programs\Recoil_Reconsturct\ammo_digit_templates.npz
+
+STDOUT
+[1/4] 视频 2560x1440 @ 120.000 fps；全片扫描弹药 ROI (2348, 1218, 2464, 1268) ...
+      自动识别: OCR 弹匣 45 发，约 10 帧/发，分析范围 [154, 595]
+      检出 45 个关键帧: [163, 172, 182, 191, 201, 210, 220, 230, 240, 249, 259, 268, 278, 287, 297, 307, 316, 326, 335, 345, 355, 364, 374, 383, 393, 403, 414, 422, 432, 441, 451, 460, 470, 479, 489, 499, 508, 518, 528, 538, 547, 557, 566, 576, 585]
+[2/4] 镜外 Feature Matching + RANSAC（镜内/枪体/HUD/高亮火花已屏蔽）...
+      已处理 50/441 帧
+      已处理 100/441 帧
+      已处理 150/441 帧
+      已处理 200/441 帧
+      已处理 250/441 帧
+      已处理 300/441 帧
+      已处理 350/441 帧
+      已处理 400/441 帧
+[3/4] 合成准星实际交点与镜外相机变换，生成轨迹 ...
+[4/4] 完成。输出:
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\sr-3m\keyframes_recoil.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\sr-3m\all_frames_motion.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\sr-3m\summary.json
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\sr-3m\recoil_trajectory.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\sr-3m\reticle_keyframes_contact_sheet.jpg
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\sr-3m\feature_mask.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\sr-3m\ammo_detection.csv
+      自动估算最大 pitch: 20.9810° (FOV=104° reference-horizontal, 2x)
+
+STDERR

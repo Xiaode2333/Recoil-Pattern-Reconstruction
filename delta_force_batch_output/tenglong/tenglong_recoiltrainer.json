@@ -1,0 +1,440 @@
+{
+  "profile_id": "65078ed0a611a635a67038712009bb5e",
+  "name": "Delta Force · Tenglong",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 97.407911,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 99.372509,
+      "y": 94.872574,
+      "t_ms": 92
+    },
+    {
+      "shot_index": 2,
+      "x": 98.062226,
+      "y": 98.865512,
+      "t_ms": 175
+    },
+    {
+      "shot_index": 3,
+      "x": 99.652024,
+      "y": 102.630864,
+      "t_ms": 258
+    },
+    {
+      "shot_index": 4,
+      "x": 98.040847,
+      "y": 105.73642,
+      "t_ms": 342
+    },
+    {
+      "shot_index": 5,
+      "x": 99.231623,
+      "y": 111.759023,
+      "t_ms": 425
+    },
+    {
+      "shot_index": 6,
+      "x": 96.979275,
+      "y": 115.441015,
+      "t_ms": 517
+    },
+    {
+      "shot_index": 7,
+      "x": 94.562524,
+      "y": 120.429001,
+      "t_ms": 600
+    },
+    {
+      "shot_index": 8,
+      "x": 92.41011,
+      "y": 123.197155,
+      "t_ms": 683
+    },
+    {
+      "shot_index": 9,
+      "x": 91.063005,
+      "y": 128.103349,
+      "t_ms": 767
+    },
+    {
+      "shot_index": 10,
+      "x": 90.0,
+      "y": 132.487615,
+      "t_ms": 858
+    },
+    {
+      "shot_index": 11,
+      "x": 91.886288,
+      "y": 138.565314,
+      "t_ms": 942
+    },
+    {
+      "shot_index": 12,
+      "x": 93.9005,
+      "y": 141.247499,
+      "t_ms": 1025
+    },
+    {
+      "shot_index": 13,
+      "x": 97.994298,
+      "y": 145.501123,
+      "t_ms": 1108
+    },
+    {
+      "shot_index": 14,
+      "x": 96.628242,
+      "y": 147.765396,
+      "t_ms": 1192
+    },
+    {
+      "shot_index": 15,
+      "x": 99.170525,
+      "y": 151.065187,
+      "t_ms": 1275
+    },
+    {
+      "shot_index": 16,
+      "x": 100.374424,
+      "y": 155.239499,
+      "t_ms": 1358
+    },
+    {
+      "shot_index": 17,
+      "x": 102.943224,
+      "y": 161.547715,
+      "t_ms": 1450
+    },
+    {
+      "shot_index": 18,
+      "x": 105.761949,
+      "y": 164.096185,
+      "t_ms": 1533
+    },
+    {
+      "shot_index": 19,
+      "x": 107.923501,
+      "y": 168.779316,
+      "t_ms": 1617
+    },
+    {
+      "shot_index": 20,
+      "x": 109.174793,
+      "y": 171.537364,
+      "t_ms": 1700
+    },
+    {
+      "shot_index": 21,
+      "x": 112.330362,
+      "y": 175.463695,
+      "t_ms": 1783
+    },
+    {
+      "shot_index": 22,
+      "x": 115.381342,
+      "y": 180.207058,
+      "t_ms": 1875
+    },
+    {
+      "shot_index": 23,
+      "x": 117.489149,
+      "y": 184.67901,
+      "t_ms": 1958
+    },
+    {
+      "shot_index": 24,
+      "x": 118.358743,
+      "y": 186.590055,
+      "t_ms": 2042
+    },
+    {
+      "shot_index": 25,
+      "x": 123.647723,
+      "y": 190.816784,
+      "t_ms": 2125
+    },
+    {
+      "shot_index": 26,
+      "x": 124.226503,
+      "y": 194.823029,
+      "t_ms": 2217
+    },
+    {
+      "shot_index": 27,
+      "x": 127.04071,
+      "y": 198.69481,
+      "t_ms": 2300
+    },
+    {
+      "shot_index": 28,
+      "x": 128.92863,
+      "y": 204.288926,
+      "t_ms": 2383
+    },
+    {
+      "shot_index": 29,
+      "x": 129.305067,
+      "y": 208.883472,
+      "t_ms": 2467
+    },
+    {
+      "shot_index": 30,
+      "x": 132.078958,
+      "y": 210.198127,
+      "t_ms": 2550
+    },
+    {
+      "shot_index": 31,
+      "x": 134.777073,
+      "y": 217.885594,
+      "t_ms": 2642
+    },
+    {
+      "shot_index": 32,
+      "x": 135.516595,
+      "y": 220.933728,
+      "t_ms": 2725
+    },
+    {
+      "shot_index": 33,
+      "x": 136.223259,
+      "y": 225.506994,
+      "t_ms": 2808
+    },
+    {
+      "shot_index": 34,
+      "x": 138.283392,
+      "y": 231.876699,
+      "t_ms": 2892
+    },
+    {
+      "shot_index": 35,
+      "x": 139.765611,
+      "y": 233.574623,
+      "t_ms": 2975
+    },
+    {
+      "shot_index": 36,
+      "x": 142.173362,
+      "y": 237.089907,
+      "t_ms": 3058
+    },
+    {
+      "shot_index": 37,
+      "x": 144.599129,
+      "y": 242.576891,
+      "t_ms": 3150
+    },
+    {
+      "shot_index": 38,
+      "x": 144.366757,
+      "y": 245.52958,
+      "t_ms": 3233
+    },
+    {
+      "shot_index": 39,
+      "x": 148.483444,
+      "y": 247.44391,
+      "t_ms": 3317
+    },
+    {
+      "shot_index": 40,
+      "x": 149.336654,
+      "y": 251.517765,
+      "t_ms": 3400
+    },
+    {
+      "shot_index": 41,
+      "x": 149.989796,
+      "y": 256.098903,
+      "t_ms": 3483
+    },
+    {
+      "shot_index": 42,
+      "x": 150.588857,
+      "y": 260.443304,
+      "t_ms": 3575
+    },
+    {
+      "shot_index": 43,
+      "x": 152.013843,
+      "y": 265.910901,
+      "t_ms": 3658
+    },
+    {
+      "shot_index": 44,
+      "x": 153.745815,
+      "y": 265.942915,
+      "t_ms": 3742
+    },
+    {
+      "shot_index": 45,
+      "x": 154.314904,
+      "y": 272.902197,
+      "t_ms": 3825
+    },
+    {
+      "shot_index": 46,
+      "x": 157.244132,
+      "y": 275.430273,
+      "t_ms": 3908
+    },
+    {
+      "shot_index": 47,
+      "x": 158.084773,
+      "y": 282.265851,
+      "t_ms": 3992
+    },
+    {
+      "shot_index": 48,
+      "x": 159.20996,
+      "y": 281.939009,
+      "t_ms": 4083
+    },
+    {
+      "shot_index": 49,
+      "x": 163.076814,
+      "y": 282.005282,
+      "t_ms": 4167
+    },
+    {
+      "shot_index": 50,
+      "x": 163.813409,
+      "y": 293.907051,
+      "t_ms": 4258
+    },
+    {
+      "shot_index": 51,
+      "x": 164.045044,
+      "y": 297.282157,
+      "t_ms": 4333
+    },
+    {
+      "shot_index": 52,
+      "x": 164.32566,
+      "y": 303.080011,
+      "t_ms": 4433
+    },
+    {
+      "shot_index": 53,
+      "x": 165.829673,
+      "y": 307.087371,
+      "t_ms": 4508
+    },
+    {
+      "shot_index": 54,
+      "x": 168.296296,
+      "y": 313.007879,
+      "t_ms": 4675
+    },
+    {
+      "shot_index": 55,
+      "x": 170.335365,
+      "y": 317.959413,
+      "t_ms": 4758
+    },
+    {
+      "shot_index": 56,
+      "x": 171.922573,
+      "y": 317.563505,
+      "t_ms": 4842
+    },
+    {
+      "shot_index": 57,
+      "x": 174.103269,
+      "y": 326.369403,
+      "t_ms": 4933
+    },
+    {
+      "shot_index": 58,
+      "x": 173.696416,
+      "y": 330.0,
+      "t_ms": 5017
+    },
+    {
+      "shot_index": 59,
+      "x": 168.899121,
+      "y": 326.231832,
+      "t_ms": 5167
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 3
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 4,
+      "end_shot": 10
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 11,
+      "end_shot": 57
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 58,
+      "end_shot": 59
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 49.06371604021743,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:20:02.439335+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:Tenglong",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · Tenglong",
+    "zh-CN": "三角洲·腾龙"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "Tenglong",
+  "workshop_title": "Delta Force · Tenglong Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "Tenglong",
+        "workshop_title": "Delta Force · Tenglong Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "腾龙",
+        "workshop_title": "三角洲·腾龙 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

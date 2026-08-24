@@ -1,0 +1,13 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\convert_to_recoiltrainer.py C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\m16a4\keyframes_recoil.csv --output C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\m16a4\m16a4_recoiltrainer.json --name "Delta Force · M16A4" --localized-name-en "Delta Force · M16A4" --localized-name-zh-cn 三角洲·M16A4 --weapon-name-en M16A4 --weapon-name-zh-cn M16A4 --game-name-en "Delta Force" --game-name-zh-cn 三角洲行动 --workshop-title-en "Delta Force · M16A4 Recoil" --workshop-title-zh-cn "三角洲·M16A4 后坐力" --scope-magnification 2.0 --recoil-amplitude-divisor 1.0 --smoothing spline --smoothing-strength 0.2 --segmentation recoil-trainer --tags "game:delta-force,Delta Force,weapon:M16A4,video-reconstruction,scope:2x" --recoil-trainer-root C:\XiaodeDocuments\Programs\RecoilTrainer --profile-id dee8a84cdcafdab9b5ff80ce2a38b916
+
+STDOUT
+Wrote: C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\m16a4\m16a4_recoiltrainer.json
+Profile: Delta Force · M16A4 (dee8a84cdcafdab9b5ff80ce2a38b916)
+Shots: 60, duration: 6967 ms, FPS: 120.0
+Source span: x=93.505px, y=579.188px; uniform scale=0.414373510
+Recorded pitch: 21.131948 deg (summary.json FOV/scope estimate)
+Smoothing: spline 0.200; segments: 12 (recoil-trainer)
+Recoil Trainer model validation: passed
+
+STDERR

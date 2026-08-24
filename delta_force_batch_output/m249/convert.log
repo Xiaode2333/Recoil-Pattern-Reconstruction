@@ -1,0 +1,13 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\convert_to_recoiltrainer.py C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\m249\keyframes_recoil.csv --output C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\m249\m249_recoiltrainer.json --name "Delta Force · M249" --localized-name-en "Delta Force · M249" --localized-name-zh-cn 三角洲·M249 --weapon-name-en M249 --weapon-name-zh-cn M249 --game-name-en "Delta Force" --game-name-zh-cn 三角洲行动 --workshop-title-en "Delta Force · M249 Recoil" --workshop-title-zh-cn "三角洲·M249 后坐力" --scope-magnification 2.0 --recoil-amplitude-divisor 1.0 --smoothing spline --smoothing-strength 0.2 --segmentation recoil-trainer --tags "game:delta-force,Delta Force,weapon:M249,video-reconstruction,scope:2x" --recoil-trainer-root C:\XiaodeDocuments\Programs\RecoilTrainer --profile-id c1ce115e8631babbc8efacf1051a9e50
+
+STDOUT
+Wrote: C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\m249\m249_recoiltrainer.json
+Profile: Delta Force · M249 (c1ce115e8631babbc8efacf1051a9e50)
+Shots: 60, duration: 4117 ms, FPS: 120.0
+Source span: x=349.559px, y=623.937px; uniform scale=0.384653959
+Recorded pitch: 22.519400 deg (summary.json FOV/scope estimate)
+Smoothing: spline 0.200; segments: 3 (recoil-trainer)
+Recoil Trainer model validation: passed
+
+STDERR

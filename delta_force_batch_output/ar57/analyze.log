@@ -1,0 +1,29 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\analyze_recoil.py D:\DF\AR57.mp4 --output-dir C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57 --fov-deg 104 --fov-axis reference-horizontal --scope-magnification 2.0 --reticle-mode tick-lines --ammo-template-file C:\XiaodeDocuments\Programs\Recoil_Reconsturct\ammo_digit_templates.npz
+
+STDOUT
+[1/4] 视频 2560x1440 @ 120.000 fps；全片扫描弹药 ROI (2348, 1218, 2464, 1268) ...
+      自动识别: OCR 弹匣 50 发，约 8 帧/发，分析范围 [509, 937]
+      检出 50 个关键帧: [518, 526, 533, 542, 549, 558, 566, 574, 582, 589, 598, 605, 614, 622, 630, 638, 645, 654, 661, 670, 678, 685, 694, 701, 709, 717, 725, 733, 741, 749, 757, 765, 774, 781, 789, 798, 805, 814, 821, 830, 837, 853, 862, 869, 883, 893, 901, 909, 921, 927]
+[2/4] 镜外 Feature Matching + RANSAC（镜内/枪体/HUD/高亮火花已屏蔽）...
+      已处理 50/426 帧
+      已处理 100/426 帧
+      已处理 150/426 帧
+      已处理 200/426 帧
+      已处理 250/426 帧
+      已处理 300/426 帧
+      已处理 350/426 帧
+      已处理 400/426 帧
+      警告: 4 个失败步长已用相邻可靠 SE(2) 步长插值
+[3/4] 合成准星实际交点与镜外相机变换，生成轨迹 ...
+[4/4] 完成。输出:
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\keyframes_recoil.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\all_frames_motion.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\summary.json
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\recoil_trajectory.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\reticle_keyframes_contact_sheet.jpg
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\feature_mask.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\ammo_detection.csv
+      自动估算最大 pitch: 39.4846° (FOV=104° reference-horizontal, 2x)
+
+STDERR

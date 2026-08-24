@@ -1,0 +1,13 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\convert_to_recoiltrainer.py C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\scar-h\keyframes_recoil.csv --output C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\scar-h\scar-h_recoiltrainer.json --name "Delta Force · SCAR-H" --localized-name-en "Delta Force · SCAR-H" --localized-name-zh-cn 三角洲·SCAR-H --weapon-name-en SCAR-H --weapon-name-zh-cn SCAR-H --game-name-en "Delta Force" --game-name-zh-cn 三角洲行动 --workshop-title-en "Delta Force · SCAR-H Recoil" --workshop-title-zh-cn "三角洲·SCAR-H 后坐力" --scope-magnification 2.0 --recoil-amplitude-divisor 1.0 --smoothing spline --smoothing-strength 0.2 --segmentation recoil-trainer --tags "game:delta-force,Delta Force,weapon:SCAR-H,video-reconstruction,scope:2x" --recoil-trainer-root C:\XiaodeDocuments\Programs\RecoilTrainer --profile-id 7afa22dd7d0041ccad6db85b8d8c542b
+
+STDOUT
+Wrote: C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\scar-h\scar-h_recoiltrainer.json
+Profile: Delta Force · SCAR-H (7afa22dd7d0041ccad6db85b8d8c542b)
+Shots: 50, duration: 5033 ms, FPS: 120.0
+Source span: x=90.278px, y=1321.963px; uniform scale=0.181548243
+Recorded pitch: 41.574318 deg (summary.json FOV/scope estimate)
+Smoothing: spline 0.200; segments: 12 (recoil-trainer)
+Recoil Trainer model validation: passed
+
+STDERR

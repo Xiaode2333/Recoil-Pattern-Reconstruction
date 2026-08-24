@@ -1,0 +1,13 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\convert_to_recoiltrainer.py C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\keyframes_recoil.csv --output C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\ar57_recoiltrainer.json --name "Delta Force · AR57" --localized-name-en "Delta Force · AR57" --localized-name-zh-cn 三角洲·AR57 --weapon-name-en AR57 --weapon-name-zh-cn AR57 --game-name-en "Delta Force" --game-name-zh-cn 三角洲行动 --workshop-title-en "Delta Force · AR57 Recoil" --workshop-title-zh-cn "三角洲·AR57 后坐力" --scope-magnification 2.0 --recoil-amplitude-divisor 1.0 --smoothing spline --smoothing-strength 0.2 --segmentation recoil-trainer --tags "game:delta-force,Delta Force,weapon:AR57,video-reconstruction,scope:2x" --recoil-trainer-root C:\XiaodeDocuments\Programs\RecoilTrainer --profile-id a20936947fc231f6ea0fe816da953771
+
+STDOUT
+Wrote: C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\ar57\ar57_recoiltrainer.json
+Profile: Delta Force · AR57 (a20936947fc231f6ea0fe816da953771)
+Shots: 50, duration: 3408 ms, FPS: 120.0
+Source span: x=198.851px, y=1257.192px; uniform scale=0.190901568
+Recorded pitch: 39.484637 deg (summary.json FOV/scope estimate)
+Smoothing: spline 0.200; segments: 9 (recoil-trainer)
+Recoil Trainer model validation: passed
+
+STDERR

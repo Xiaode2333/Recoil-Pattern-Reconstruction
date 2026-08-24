@@ -1,0 +1,474 @@
+{
+  "profile_id": "3f19e14cf73f565faff14c6c47160158",
+  "name": "Delta Force · Bizon",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 95.203221,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 94.668409,
+      "y": 95.596482,
+      "t_ms": 92
+    },
+    {
+      "shot_index": 2,
+      "x": 95.239825,
+      "y": 101.571199,
+      "t_ms": 183
+    },
+    {
+      "shot_index": 3,
+      "x": 97.017439,
+      "y": 104.762729,
+      "t_ms": 267
+    },
+    {
+      "shot_index": 4,
+      "x": 95.098159,
+      "y": 114.680313,
+      "t_ms": 367
+    },
+    {
+      "shot_index": 5,
+      "x": 93.081701,
+      "y": 114.482003,
+      "t_ms": 458
+    },
+    {
+      "shot_index": 6,
+      "x": 90.856865,
+      "y": 119.729849,
+      "t_ms": 550
+    },
+    {
+      "shot_index": 7,
+      "x": 91.638834,
+      "y": 124.264718,
+      "t_ms": 633
+    },
+    {
+      "shot_index": 8,
+      "x": 90.0,
+      "y": 131.207104,
+      "t_ms": 733
+    },
+    {
+      "shot_index": 9,
+      "x": 92.790794,
+      "y": 132.528899,
+      "t_ms": 817
+    },
+    {
+      "shot_index": 10,
+      "x": 95.196668,
+      "y": 136.430232,
+      "t_ms": 908
+    },
+    {
+      "shot_index": 11,
+      "x": 96.939643,
+      "y": 138.137302,
+      "t_ms": 992
+    },
+    {
+      "shot_index": 12,
+      "x": 97.936609,
+      "y": 144.176431,
+      "t_ms": 1092
+    },
+    {
+      "shot_index": 13,
+      "x": 98.333367,
+      "y": 147.239793,
+      "t_ms": 1183
+    },
+    {
+      "shot_index": 14,
+      "x": 99.512123,
+      "y": 150.661071,
+      "t_ms": 1275
+    },
+    {
+      "shot_index": 15,
+      "x": 99.108453,
+      "y": 153.075604,
+      "t_ms": 1358
+    },
+    {
+      "shot_index": 16,
+      "x": 100.410833,
+      "y": 156.840627,
+      "t_ms": 1458
+    },
+    {
+      "shot_index": 17,
+      "x": 101.583005,
+      "y": 161.255654,
+      "t_ms": 1542
+    },
+    {
+      "shot_index": 18,
+      "x": 100.887804,
+      "y": 167.665425,
+      "t_ms": 1633
+    },
+    {
+      "shot_index": 19,
+      "x": 99.508681,
+      "y": 171.450028,
+      "t_ms": 1725
+    },
+    {
+      "shot_index": 20,
+      "x": 100.775793,
+      "y": 175.116677,
+      "t_ms": 1817
+    },
+    {
+      "shot_index": 21,
+      "x": 101.882649,
+      "y": 179.701672,
+      "t_ms": 1908
+    },
+    {
+      "shot_index": 22,
+      "x": 100.57056,
+      "y": 185.535506,
+      "t_ms": 1992
+    },
+    {
+      "shot_index": 23,
+      "x": 101.780595,
+      "y": 198.55845,
+      "t_ms": 2083
+    },
+    {
+      "shot_index": 24,
+      "x": 102.432172,
+      "y": 198.16245,
+      "t_ms": 2175
+    },
+    {
+      "shot_index": 25,
+      "x": 104.080477,
+      "y": 201.260898,
+      "t_ms": 2267
+    },
+    {
+      "shot_index": 26,
+      "x": 104.402705,
+      "y": 213.661237,
+      "t_ms": 2358
+    },
+    {
+      "shot_index": 27,
+      "x": 105.289081,
+      "y": 213.373751,
+      "t_ms": 2450
+    },
+    {
+      "shot_index": 28,
+      "x": 104.118353,
+      "y": 212.987438,
+      "t_ms": 2542
+    },
+    {
+      "shot_index": 29,
+      "x": 107.235562,
+      "y": 221.144552,
+      "t_ms": 2633
+    },
+    {
+      "shot_index": 30,
+      "x": 108.68673,
+      "y": 225.795009,
+      "t_ms": 2725
+    },
+    {
+      "shot_index": 31,
+      "x": 109.003073,
+      "y": 226.667942,
+      "t_ms": 2808
+    },
+    {
+      "shot_index": 32,
+      "x": 113.366639,
+      "y": 229.115307,
+      "t_ms": 2908
+    },
+    {
+      "shot_index": 33,
+      "x": 113.995518,
+      "y": 231.697071,
+      "t_ms": 3000
+    },
+    {
+      "shot_index": 34,
+      "x": 116.95648,
+      "y": 232.631526,
+      "t_ms": 3083
+    },
+    {
+      "shot_index": 35,
+      "x": 119.118833,
+      "y": 236.449572,
+      "t_ms": 3175
+    },
+    {
+      "shot_index": 36,
+      "x": 119.234588,
+      "y": 239.503766,
+      "t_ms": 3267
+    },
+    {
+      "shot_index": 37,
+      "x": 118.390969,
+      "y": 241.348786,
+      "t_ms": 3358
+    },
+    {
+      "shot_index": 38,
+      "x": 119.715454,
+      "y": 246.865486,
+      "t_ms": 3450
+    },
+    {
+      "shot_index": 39,
+      "x": 119.931138,
+      "y": 250.735629,
+      "t_ms": 3542
+    },
+    {
+      "shot_index": 40,
+      "x": 118.422418,
+      "y": 254.356125,
+      "t_ms": 3633
+    },
+    {
+      "shot_index": 41,
+      "x": 118.524424,
+      "y": 256.200307,
+      "t_ms": 3725
+    },
+    {
+      "shot_index": 42,
+      "x": 118.357743,
+      "y": 259.255626,
+      "t_ms": 3817
+    },
+    {
+      "shot_index": 43,
+      "x": 119.512297,
+      "y": 262.084638,
+      "t_ms": 3900
+    },
+    {
+      "shot_index": 44,
+      "x": 120.041372,
+      "y": 265.81759,
+      "t_ms": 3992
+    },
+    {
+      "shot_index": 45,
+      "x": 123.208685,
+      "y": 270.84044,
+      "t_ms": 4083
+    },
+    {
+      "shot_index": 46,
+      "x": 125.320861,
+      "y": 273.778921,
+      "t_ms": 4175
+    },
+    {
+      "shot_index": 47,
+      "x": 127.846021,
+      "y": 277.083656,
+      "t_ms": 4267
+    },
+    {
+      "shot_index": 48,
+      "x": 129.807694,
+      "y": 278.464249,
+      "t_ms": 4358
+    },
+    {
+      "shot_index": 49,
+      "x": 131.478345,
+      "y": 281.616289,
+      "t_ms": 4450
+    },
+    {
+      "shot_index": 50,
+      "x": 134.26526,
+      "y": 284.8667,
+      "t_ms": 4542
+    },
+    {
+      "shot_index": 51,
+      "x": 135.914712,
+      "y": 288.540721,
+      "t_ms": 4642
+    },
+    {
+      "shot_index": 52,
+      "x": 138.197606,
+      "y": 289.63403,
+      "t_ms": 4725
+    },
+    {
+      "shot_index": 53,
+      "x": 138.944102,
+      "y": 289.765106,
+      "t_ms": 4817
+    },
+    {
+      "shot_index": 54,
+      "x": 139.656024,
+      "y": 293.303598,
+      "t_ms": 4900
+    },
+    {
+      "shot_index": 55,
+      "x": 141.94943,
+      "y": 304.006204,
+      "t_ms": 4992
+    },
+    {
+      "shot_index": 56,
+      "x": 144.13437,
+      "y": 303.863176,
+      "t_ms": 5083
+    },
+    {
+      "shot_index": 57,
+      "x": 146.195421,
+      "y": 303.531616,
+      "t_ms": 5175
+    },
+    {
+      "shot_index": 58,
+      "x": 147.845613,
+      "y": 305.520901,
+      "t_ms": 5267
+    },
+    {
+      "shot_index": 59,
+      "x": 145.779934,
+      "y": 316.011212,
+      "t_ms": 5358
+    },
+    {
+      "shot_index": 60,
+      "x": 148.086679,
+      "y": 315.65816,
+      "t_ms": 5450
+    },
+    {
+      "shot_index": 61,
+      "x": 147.363811,
+      "y": 315.399235,
+      "t_ms": 5542
+    },
+    {
+      "shot_index": 62,
+      "x": 144.221881,
+      "y": 319.862807,
+      "t_ms": 5633
+    },
+    {
+      "shot_index": 63,
+      "x": 146.192835,
+      "y": 330.0,
+      "t_ms": 5717
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 1
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 2,
+      "end_shot": 7
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 8,
+      "end_shot": 38
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 39,
+      "end_shot": 41
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 42,
+      "end_shot": 60
+    },
+    {
+      "segment_id": "Seq6",
+      "start_shot": 61,
+      "end_shot": 63
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 44.45004739645489,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:20:02.498734+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:Bizon",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · Bizon",
+    "zh-CN": "三角洲·野牛"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "Bizon",
+  "workshop_title": "Delta Force · Bizon Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "Bizon",
+        "workshop_title": "Delta Force · Bizon Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "野牛",
+        "workshop_title": "三角洲·野牛 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

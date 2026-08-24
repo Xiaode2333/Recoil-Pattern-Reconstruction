@@ -1,0 +1,47 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\analyze_recoil.py D:\DF\PKM.mp4 --output-dir C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\pkm --fov-deg 104 --fov-axis reference-horizontal --scope-magnification 2.0 --reticle-mode tick-lines --ammo-template-file C:\XiaodeDocuments\Programs\Recoil_Reconsturct\ammo_digit_templates.npz
+
+STDOUT
+[1/4] 视频 2560x1440 @ 120.000 fps；全片扫描弹药 ROI (2348, 1218, 2464, 1268) ...
+      自动识别: OCR 弹匣 125 发，约 11 帧/发，分析范围 [224, 1585]
+      检出 125 个关键帧: [236, 247, 257, 268, 279, 290, 300, 311, 322, 333, 344, 354, 365, 376, 387, 398, 408, 418, 429, 441, 452, 463, 473, 484, 495, 505, 516, 532, 540, 548, 560, 570, 581, 591, 602, 613, 624, 634, 646, 656, 667, 678, 688, 699, 710, 722, 732, 742, 753, 764, 775, 786, 797, 807, 818, 829, 840, 850, 861, 872, 883, 894, 904, 915, 926, 937, 947, 958, 969, 980, 990, 1001, 1012, 1023, 1034, 1044, 1055, 1066, 1077, 1088, 1098, 1109, 1120, 1131, 1142, 1152, 1163, 1174, 1184, 1196, 1207, 1217, 1228, 1238, 1249, 1260, 1271, 1281, 1292, 1303, 1314, 1325, 1336, 1346, 1357, 1367, 1378, 1389, 1400, 1411, 1421, 1432, 1443, 1454, 1465, 1475, 1486, 1497, 1508, 1519, 1529, 1540, 1551, 1562, 1574]
+[2/4] 镜外 Feature Matching + RANSAC（镜内/枪体/HUD/高亮火花已屏蔽）...
+      已处理 50/1361 帧
+      已处理 100/1361 帧
+      已处理 150/1361 帧
+      已处理 200/1361 帧
+      已处理 250/1361 帧
+      已处理 300/1361 帧
+      已处理 350/1361 帧
+      已处理 400/1361 帧
+      已处理 450/1361 帧
+      已处理 500/1361 帧
+      已处理 550/1361 帧
+      已处理 600/1361 帧
+      已处理 650/1361 帧
+      已处理 700/1361 帧
+      已处理 750/1361 帧
+      已处理 800/1361 帧
+      已处理 850/1361 帧
+      已处理 900/1361 帧
+      已处理 950/1361 帧
+      已处理 1000/1361 帧
+      已处理 1050/1361 帧
+      已处理 1100/1361 帧
+      已处理 1150/1361 帧
+      已处理 1200/1361 帧
+      已处理 1250/1361 帧
+      已处理 1300/1361 帧
+      已处理 1350/1361 帧
+[3/4] 合成准星实际交点与镜外相机变换，生成轨迹 ...
+[4/4] 完成。输出:
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\pkm\keyframes_recoil.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\pkm\all_frames_motion.csv
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\pkm\summary.json
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\pkm\recoil_trajectory.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\pkm\reticle_keyframes_contact_sheet.jpg
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\pkm\feature_mask.png
+      C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\pkm\ammo_detection.csv
+      自动估算最大 pitch: 58.0115° (FOV=104° reference-horizontal, 2x)
+
+STDERR

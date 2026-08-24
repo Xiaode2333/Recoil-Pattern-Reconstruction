@@ -1,0 +1,420 @@
+{
+  "profile_id": "7afa22dd7d0041ccad6db85b8d8c542b",
+  "name": "Delta Force · SCAR-H",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 96.526876,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 94.95856,
+      "y": 97.167082,
+      "t_ms": 108
+    },
+    {
+      "shot_index": 2,
+      "x": 92.852387,
+      "y": 104.523233,
+      "t_ms": 208
+    },
+    {
+      "shot_index": 3,
+      "x": 94.15611,
+      "y": 110.443631,
+      "t_ms": 308
+    },
+    {
+      "shot_index": 4,
+      "x": 96.391334,
+      "y": 116.602277,
+      "t_ms": 408
+    },
+    {
+      "shot_index": 5,
+      "x": 95.926257,
+      "y": 121.183641,
+      "t_ms": 508
+    },
+    {
+      "shot_index": 6,
+      "x": 97.986429,
+      "y": 126.704702,
+      "t_ms": 608
+    },
+    {
+      "shot_index": 7,
+      "x": 97.528729,
+      "y": 133.366131,
+      "t_ms": 717
+    },
+    {
+      "shot_index": 8,
+      "x": 96.224603,
+      "y": 139.351948,
+      "t_ms": 817
+    },
+    {
+      "shot_index": 9,
+      "x": 93.826411,
+      "y": 145.940172,
+      "t_ms": 925
+    },
+    {
+      "shot_index": 10,
+      "x": 92.965012,
+      "y": 151.144206,
+      "t_ms": 1025
+    },
+    {
+      "shot_index": 11,
+      "x": 91.727797,
+      "y": 152.662133,
+      "t_ms": 1142
+    },
+    {
+      "shot_index": 12,
+      "x": 93.241293,
+      "y": 157.629074,
+      "t_ms": 1233
+    },
+    {
+      "shot_index": 13,
+      "x": 95.082341,
+      "y": 161.081832,
+      "t_ms": 1333
+    },
+    {
+      "shot_index": 14,
+      "x": 92.208525,
+      "y": 166.309033,
+      "t_ms": 1433
+    },
+    {
+      "shot_index": 15,
+      "x": 93.848124,
+      "y": 170.072731,
+      "t_ms": 1542
+    },
+    {
+      "shot_index": 16,
+      "x": 93.524422,
+      "y": 174.22539,
+      "t_ms": 1642
+    },
+    {
+      "shot_index": 17,
+      "x": 94.594657,
+      "y": 179.000872,
+      "t_ms": 1742
+    },
+    {
+      "shot_index": 18,
+      "x": 95.069571,
+      "y": 185.676605,
+      "t_ms": 1850
+    },
+    {
+      "shot_index": 19,
+      "x": 91.421843,
+      "y": 187.931523,
+      "t_ms": 1950
+    },
+    {
+      "shot_index": 20,
+      "x": 90.371761,
+      "y": 191.98853,
+      "t_ms": 2050
+    },
+    {
+      "shot_index": 21,
+      "x": 90.0,
+      "y": 198.943557,
+      "t_ms": 2158
+    },
+    {
+      "shot_index": 22,
+      "x": 92.467397,
+      "y": 205.671391,
+      "t_ms": 2258
+    },
+    {
+      "shot_index": 23,
+      "x": 90.970255,
+      "y": 214.428198,
+      "t_ms": 2367
+    },
+    {
+      "shot_index": 24,
+      "x": 93.875159,
+      "y": 218.410247,
+      "t_ms": 2467
+    },
+    {
+      "shot_index": 25,
+      "x": 95.61323,
+      "y": 223.94716,
+      "t_ms": 2567
+    },
+    {
+      "shot_index": 26,
+      "x": 94.380265,
+      "y": 235.703817,
+      "t_ms": 2675
+    },
+    {
+      "shot_index": 27,
+      "x": 94.724407,
+      "y": 237.767774,
+      "t_ms": 2775
+    },
+    {
+      "shot_index": 28,
+      "x": 94.413671,
+      "y": 244.867335,
+      "t_ms": 2883
+    },
+    {
+      "shot_index": 29,
+      "x": 93.600547,
+      "y": 248.569049,
+      "t_ms": 2983
+    },
+    {
+      "shot_index": 30,
+      "x": 93.713756,
+      "y": 252.987252,
+      "t_ms": 3075
+    },
+    {
+      "shot_index": 31,
+      "x": 93.564437,
+      "y": 256.892571,
+      "t_ms": 3192
+    },
+    {
+      "shot_index": 32,
+      "x": 94.447843,
+      "y": 261.246742,
+      "t_ms": 3292
+    },
+    {
+      "shot_index": 33,
+      "x": 95.885696,
+      "y": 270.204111,
+      "t_ms": 3392
+    },
+    {
+      "shot_index": 34,
+      "x": 96.06624,
+      "y": 271.890126,
+      "t_ms": 3492
+    },
+    {
+      "shot_index": 35,
+      "x": 96.49703,
+      "y": 276.444447,
+      "t_ms": 3600
+    },
+    {
+      "shot_index": 36,
+      "x": 97.717408,
+      "y": 280.006311,
+      "t_ms": 3692
+    },
+    {
+      "shot_index": 37,
+      "x": 96.744509,
+      "y": 284.300511,
+      "t_ms": 3800
+    },
+    {
+      "shot_index": 38,
+      "x": 99.41241,
+      "y": 291.590936,
+      "t_ms": 3917
+    },
+    {
+      "shot_index": 39,
+      "x": 97.728065,
+      "y": 292.893513,
+      "t_ms": 4008
+    },
+    {
+      "shot_index": 40,
+      "x": 102.287034,
+      "y": 297.456001,
+      "t_ms": 4108
+    },
+    {
+      "shot_index": 41,
+      "x": 100.965144,
+      "y": 297.037971,
+      "t_ms": 4208
+    },
+    {
+      "shot_index": 42,
+      "x": 103.730585,
+      "y": 299.519682,
+      "t_ms": 4308
+    },
+    {
+      "shot_index": 43,
+      "x": 101.739312,
+      "y": 309.45883,
+      "t_ms": 4408
+    },
+    {
+      "shot_index": 44,
+      "x": 101.961361,
+      "y": 308.696891,
+      "t_ms": 4533
+    },
+    {
+      "shot_index": 45,
+      "x": 101.97458,
+      "y": 309.007879,
+      "t_ms": 4625
+    },
+    {
+      "shot_index": 46,
+      "x": 103.238939,
+      "y": 318.382137,
+      "t_ms": 4725
+    },
+    {
+      "shot_index": 47,
+      "x": 105.879901,
+      "y": 321.548907,
+      "t_ms": 4825
+    },
+    {
+      "shot_index": 48,
+      "x": 106.38982,
+      "y": 324.950225,
+      "t_ms": 4925
+    },
+    {
+      "shot_index": 49,
+      "x": 106.013096,
+      "y": 330.0,
+      "t_ms": 5033
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 2
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 3,
+      "end_shot": 6
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 7,
+      "end_shot": 11
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 12,
+      "end_shot": 13
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 14,
+      "end_shot": 14
+    },
+    {
+      "segment_id": "Seq6",
+      "start_shot": 15,
+      "end_shot": 15
+    },
+    {
+      "segment_id": "Seq7",
+      "start_shot": 16,
+      "end_shot": 21
+    },
+    {
+      "segment_id": "Seq8",
+      "start_shot": 22,
+      "end_shot": 27
+    },
+    {
+      "segment_id": "Seq9",
+      "start_shot": 28,
+      "end_shot": 30
+    },
+    {
+      "segment_id": "Seq10",
+      "start_shot": 31,
+      "end_shot": 42
+    },
+    {
+      "segment_id": "Seq11",
+      "start_shot": 43,
+      "end_shot": 43
+    },
+    {
+      "segment_id": "Seq12",
+      "start_shot": 44,
+      "end_shot": 49
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 41.5743179608741,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:19:55.840298+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:SCAR-H",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · SCAR-H",
+    "zh-CN": "三角洲·SCAR-H"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "SCAR-H",
+  "workshop_title": "Delta Force · SCAR-H Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "SCAR-H",
+        "workshop_title": "Delta Force · SCAR-H Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "SCAR-H",
+        "workshop_title": "三角洲·SCAR-H 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

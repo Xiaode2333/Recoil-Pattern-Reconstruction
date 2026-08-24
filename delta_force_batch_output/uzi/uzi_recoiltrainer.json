@@ -1,0 +1,401 @@
+{
+  "profile_id": "944423c96f7660cfa8171ff41b00d6ea",
+  "name": "Delta Force · UZI",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 108.659715,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 107.361107,
+      "y": 91.830536,
+      "t_ms": 75
+    },
+    {
+      "shot_index": 2,
+      "x": 108.087606,
+      "y": 109.092373,
+      "t_ms": 167
+    },
+    {
+      "shot_index": 3,
+      "x": 110.828055,
+      "y": 111.01904,
+      "t_ms": 233
+    },
+    {
+      "shot_index": 4,
+      "x": 106.537492,
+      "y": 122.507784,
+      "t_ms": 308
+    },
+    {
+      "shot_index": 5,
+      "x": 103.07738,
+      "y": 123.147924,
+      "t_ms": 383
+    },
+    {
+      "shot_index": 6,
+      "x": 102.501132,
+      "y": 130.896275,
+      "t_ms": 467
+    },
+    {
+      "shot_index": 7,
+      "x": 98.080163,
+      "y": 138.379042,
+      "t_ms": 542
+    },
+    {
+      "shot_index": 8,
+      "x": 97.381318,
+      "y": 143.735445,
+      "t_ms": 617
+    },
+    {
+      "shot_index": 9,
+      "x": 96.161484,
+      "y": 149.83339,
+      "t_ms": 692
+    },
+    {
+      "shot_index": 10,
+      "x": 104.249727,
+      "y": 154.157304,
+      "t_ms": 775
+    },
+    {
+      "shot_index": 11,
+      "x": 111.13229,
+      "y": 148.349022,
+      "t_ms": 842
+    },
+    {
+      "shot_index": 12,
+      "x": 112.491017,
+      "y": 160.201948,
+      "t_ms": 917
+    },
+    {
+      "shot_index": 13,
+      "x": 111.370351,
+      "y": 170.362972,
+      "t_ms": 1000
+    },
+    {
+      "shot_index": 14,
+      "x": 111.439189,
+      "y": 168.159806,
+      "t_ms": 1075
+    },
+    {
+      "shot_index": 15,
+      "x": 115.135259,
+      "y": 179.907007,
+      "t_ms": 1150
+    },
+    {
+      "shot_index": 16,
+      "x": 112.654237,
+      "y": 181.471818,
+      "t_ms": 1233
+    },
+    {
+      "shot_index": 17,
+      "x": 103.867321,
+      "y": 191.459404,
+      "t_ms": 1308
+    },
+    {
+      "shot_index": 18,
+      "x": 106.002835,
+      "y": 188.221349,
+      "t_ms": 1383
+    },
+    {
+      "shot_index": 19,
+      "x": 101.466573,
+      "y": 192.81065,
+      "t_ms": 1458
+    },
+    {
+      "shot_index": 20,
+      "x": 97.577114,
+      "y": 202.937217,
+      "t_ms": 1533
+    },
+    {
+      "shot_index": 21,
+      "x": 111.263085,
+      "y": 196.229016,
+      "t_ms": 1608
+    },
+    {
+      "shot_index": 22,
+      "x": 91.692821,
+      "y": 210.846591,
+      "t_ms": 1683
+    },
+    {
+      "shot_index": 23,
+      "x": 92.750042,
+      "y": 213.519587,
+      "t_ms": 1767
+    },
+    {
+      "shot_index": 24,
+      "x": 91.562359,
+      "y": 219.003482,
+      "t_ms": 1842
+    },
+    {
+      "shot_index": 25,
+      "x": 97.330591,
+      "y": 218.613139,
+      "t_ms": 1917
+    },
+    {
+      "shot_index": 26,
+      "x": 92.600126,
+      "y": 235.570233,
+      "t_ms": 2000
+    },
+    {
+      "shot_index": 27,
+      "x": 98.875801,
+      "y": 235.750555,
+      "t_ms": 2075
+    },
+    {
+      "shot_index": 28,
+      "x": 94.779616,
+      "y": 235.230849,
+      "t_ms": 2142
+    },
+    {
+      "shot_index": 29,
+      "x": 99.495281,
+      "y": 244.576238,
+      "t_ms": 2225
+    },
+    {
+      "shot_index": 30,
+      "x": 90.38936,
+      "y": 234.137313,
+      "t_ms": 2300
+    },
+    {
+      "shot_index": 31,
+      "x": 97.312192,
+      "y": 257.469199,
+      "t_ms": 2383
+    },
+    {
+      "shot_index": 32,
+      "x": 93.617041,
+      "y": 262.99909,
+      "t_ms": 2450
+    },
+    {
+      "shot_index": 33,
+      "x": 97.02997,
+      "y": 264.330519,
+      "t_ms": 2533
+    },
+    {
+      "shot_index": 34,
+      "x": 90.0,
+      "y": 271.960551,
+      "t_ms": 2608
+    },
+    {
+      "shot_index": 35,
+      "x": 92.551169,
+      "y": 278.829746,
+      "t_ms": 2683
+    },
+    {
+      "shot_index": 36,
+      "x": 94.860713,
+      "y": 287.809621,
+      "t_ms": 2775
+    },
+    {
+      "shot_index": 37,
+      "x": 92.220233,
+      "y": 289.101932,
+      "t_ms": 2908
+    },
+    {
+      "shot_index": 38,
+      "x": 95.332649,
+      "y": 299.532575,
+      "t_ms": 2992
+    },
+    {
+      "shot_index": 39,
+      "x": 92.06678,
+      "y": 309.858809,
+      "t_ms": 3075
+    },
+    {
+      "shot_index": 40,
+      "x": 98.217397,
+      "y": 318.649822,
+      "t_ms": 3225
+    },
+    {
+      "shot_index": 41,
+      "x": 98.645528,
+      "y": 320.109586,
+      "t_ms": 3300
+    },
+    {
+      "shot_index": 42,
+      "x": 96.973206,
+      "y": 329.903133,
+      "t_ms": 3375
+    },
+    {
+      "shot_index": 43,
+      "x": 97.390026,
+      "y": 321.789478,
+      "t_ms": 3467
+    },
+    {
+      "shot_index": 44,
+      "x": 97.812501,
+      "y": 330.0,
+      "t_ms": 3575
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 8
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 9,
+      "end_shot": 14
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 15,
+      "end_shot": 24
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 25,
+      "end_shot": 27
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 28,
+      "end_shot": 28
+    },
+    {
+      "segment_id": "Seq6",
+      "start_shot": 29,
+      "end_shot": 29
+    },
+    {
+      "segment_id": "Seq7",
+      "start_shot": 30,
+      "end_shot": 30
+    },
+    {
+      "segment_id": "Seq8",
+      "start_shot": 31,
+      "end_shot": 31
+    },
+    {
+      "segment_id": "Seq9",
+      "start_shot": 32,
+      "end_shot": 32
+    },
+    {
+      "segment_id": "Seq10",
+      "start_shot": 33,
+      "end_shot": 33
+    },
+    {
+      "segment_id": "Seq11",
+      "start_shot": 34,
+      "end_shot": 34
+    },
+    {
+      "segment_id": "Seq12",
+      "start_shot": 35,
+      "end_shot": 44
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 21.585379676802926,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:19:59.240133+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:UZI",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · UZI",
+    "zh-CN": "三角洲·UZI"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "UZI",
+  "workshop_title": "Delta Force · UZI Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "UZI",
+        "workshop_title": "Delta Force · UZI Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "UZI",
+        "workshop_title": "三角洲·UZI 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "trainer_recoil_*_px",
+      "trajectory_corrections": [
+        {
+          "shot": 45,
+          "reason": "terminal-empty-animation-robust-extrapolation",
+          "raw_delta_x_right_px": 34.689988448809345,
+          "raw_delta_y_up_px": -135.77651172318718,
+          "raw_delta_magnitude_px": 140.137990688804,
+          "replacement_delta_x_right_px": 1.0445558788202334,
+          "replacement_delta_y_up_px": 20.300238954271123,
+          "detection_threshold_px": 116.51713340086205
+        }
+      ]
+    }
+  },
+  "app_version": "0.1.0"
+}

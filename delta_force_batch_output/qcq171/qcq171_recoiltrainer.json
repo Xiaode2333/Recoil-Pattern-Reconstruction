@@ -1,0 +1,545 @@
+{
+  "profile_id": "1d8abd6ad24272f90f9c375aab1edf94",
+  "name": "Delta Force · QCQ171",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 167.836757,
+      "y": 90.276095,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 166.240576,
+      "y": 90.0,
+      "t_ms": 75
+    },
+    {
+      "shot_index": 2,
+      "x": 168.937227,
+      "y": 104.272357,
+      "t_ms": 158
+    },
+    {
+      "shot_index": 3,
+      "x": 169.195172,
+      "y": 105.625362,
+      "t_ms": 233
+    },
+    {
+      "shot_index": 4,
+      "x": 166.148787,
+      "y": 115.899906,
+      "t_ms": 317
+    },
+    {
+      "shot_index": 5,
+      "x": 163.470627,
+      "y": 121.101948,
+      "t_ms": 392
+    },
+    {
+      "shot_index": 6,
+      "x": 161.662994,
+      "y": 124.939201,
+      "t_ms": 467
+    },
+    {
+      "shot_index": 7,
+      "x": 160.126533,
+      "y": 129.433952,
+      "t_ms": 550
+    },
+    {
+      "shot_index": 8,
+      "x": 157.371535,
+      "y": 134.941512,
+      "t_ms": 625
+    },
+    {
+      "shot_index": 9,
+      "x": 154.377082,
+      "y": 139.598554,
+      "t_ms": 708
+    },
+    {
+      "shot_index": 10,
+      "x": 157.074113,
+      "y": 144.276044,
+      "t_ms": 783
+    },
+    {
+      "shot_index": 11,
+      "x": 160.182522,
+      "y": 150.363757,
+      "t_ms": 867
+    },
+    {
+      "shot_index": 12,
+      "x": 162.008578,
+      "y": 155.533561,
+      "t_ms": 942
+    },
+    {
+      "shot_index": 13,
+      "x": 166.726809,
+      "y": 160.954452,
+      "t_ms": 1025
+    },
+    {
+      "shot_index": 14,
+      "x": 168.622394,
+      "y": 164.531665,
+      "t_ms": 1100
+    },
+    {
+      "shot_index": 15,
+      "x": 169.121991,
+      "y": 167.823192,
+      "t_ms": 1175
+    },
+    {
+      "shot_index": 16,
+      "x": 167.411649,
+      "y": 173.476328,
+      "t_ms": 1258
+    },
+    {
+      "shot_index": 17,
+      "x": 166.064146,
+      "y": 177.233684,
+      "t_ms": 1333
+    },
+    {
+      "shot_index": 18,
+      "x": 164.66728,
+      "y": 182.568365,
+      "t_ms": 1417
+    },
+    {
+      "shot_index": 19,
+      "x": 162.996745,
+      "y": 186.978507,
+      "t_ms": 1492
+    },
+    {
+      "shot_index": 20,
+      "x": 165.784088,
+      "y": 191.974216,
+      "t_ms": 1575
+    },
+    {
+      "shot_index": 21,
+      "x": 164.808422,
+      "y": 197.527566,
+      "t_ms": 1650
+    },
+    {
+      "shot_index": 22,
+      "x": 164.275164,
+      "y": 197.146264,
+      "t_ms": 1725
+    },
+    {
+      "shot_index": 23,
+      "x": 165.839143,
+      "y": 196.769367,
+      "t_ms": 1808
+    },
+    {
+      "shot_index": 24,
+      "x": 165.830624,
+      "y": 196.521434,
+      "t_ms": 1883
+    },
+    {
+      "shot_index": 25,
+      "x": 167.12123,
+      "y": 209.511686,
+      "t_ms": 1967
+    },
+    {
+      "shot_index": 26,
+      "x": 167.271972,
+      "y": 209.222592,
+      "t_ms": 2042
+    },
+    {
+      "shot_index": 27,
+      "x": 166.404343,
+      "y": 209.638984,
+      "t_ms": 2192
+    },
+    {
+      "shot_index": 28,
+      "x": 164.015944,
+      "y": 213.670213,
+      "t_ms": 2283
+    },
+    {
+      "shot_index": 29,
+      "x": 162.50478,
+      "y": 217.26735,
+      "t_ms": 2367
+    },
+    {
+      "shot_index": 30,
+      "x": 159.055638,
+      "y": 220.542335,
+      "t_ms": 2442
+    },
+    {
+      "shot_index": 31,
+      "x": 157.810497,
+      "y": 224.254072,
+      "t_ms": 2517
+    },
+    {
+      "shot_index": 32,
+      "x": 156.397313,
+      "y": 225.702808,
+      "t_ms": 2600
+    },
+    {
+      "shot_index": 33,
+      "x": 154.557987,
+      "y": 228.474556,
+      "t_ms": 2675
+    },
+    {
+      "shot_index": 34,
+      "x": 152.378601,
+      "y": 229.355601,
+      "t_ms": 2750
+    },
+    {
+      "shot_index": 35,
+      "x": 150.893635,
+      "y": 232.118641,
+      "t_ms": 2833
+    },
+    {
+      "shot_index": 36,
+      "x": 148.899287,
+      "y": 234.712819,
+      "t_ms": 2908
+    },
+    {
+      "shot_index": 37,
+      "x": 146.594777,
+      "y": 238.763246,
+      "t_ms": 2992
+    },
+    {
+      "shot_index": 38,
+      "x": 146.73963,
+      "y": 240.404607,
+      "t_ms": 3067
+    },
+    {
+      "shot_index": 39,
+      "x": 146.237511,
+      "y": 244.274208,
+      "t_ms": 3142
+    },
+    {
+      "shot_index": 40,
+      "x": 144.1807,
+      "y": 246.123368,
+      "t_ms": 3225
+    },
+    {
+      "shot_index": 41,
+      "x": 141.935102,
+      "y": 249.409607,
+      "t_ms": 3300
+    },
+    {
+      "shot_index": 42,
+      "x": 138.625697,
+      "y": 252.296184,
+      "t_ms": 3383
+    },
+    {
+      "shot_index": 43,
+      "x": 137.726475,
+      "y": 254.616021,
+      "t_ms": 3458
+    },
+    {
+      "shot_index": 44,
+      "x": 135.965064,
+      "y": 255.537187,
+      "t_ms": 3533
+    },
+    {
+      "shot_index": 45,
+      "x": 134.871765,
+      "y": 260.581798,
+      "t_ms": 3617
+    },
+    {
+      "shot_index": 46,
+      "x": 133.353499,
+      "y": 260.859701,
+      "t_ms": 3692
+    },
+    {
+      "shot_index": 47,
+      "x": 132.188665,
+      "y": 260.630945,
+      "t_ms": 3775
+    },
+    {
+      "shot_index": 48,
+      "x": 129.928342,
+      "y": 260.38526,
+      "t_ms": 3850
+    },
+    {
+      "shot_index": 49,
+      "x": 129.526173,
+      "y": 259.880145,
+      "t_ms": 3925
+    },
+    {
+      "shot_index": 50,
+      "x": 129.244438,
+      "y": 269.792776,
+      "t_ms": 4008
+    },
+    {
+      "shot_index": 51,
+      "x": 128.276227,
+      "y": 271.378873,
+      "t_ms": 4083
+    },
+    {
+      "shot_index": 52,
+      "x": 127.387282,
+      "y": 274.717655,
+      "t_ms": 4167
+    },
+    {
+      "shot_index": 53,
+      "x": 124.60778,
+      "y": 278.013384,
+      "t_ms": 4242
+    },
+    {
+      "shot_index": 54,
+      "x": 123.71263,
+      "y": 277.596095,
+      "t_ms": 4325
+    },
+    {
+      "shot_index": 55,
+      "x": 120.810403,
+      "y": 276.934323,
+      "t_ms": 4400
+    },
+    {
+      "shot_index": 56,
+      "x": 120.339674,
+      "y": 276.61258,
+      "t_ms": 4483
+    },
+    {
+      "shot_index": 57,
+      "x": 118.822912,
+      "y": 288.394744,
+      "t_ms": 4558
+    },
+    {
+      "shot_index": 58,
+      "x": 117.033108,
+      "y": 290.92691,
+      "t_ms": 4642
+    },
+    {
+      "shot_index": 59,
+      "x": 114.730625,
+      "y": 293.671235,
+      "t_ms": 4717
+    },
+    {
+      "shot_index": 60,
+      "x": 113.869353,
+      "y": 296.356986,
+      "t_ms": 4792
+    },
+    {
+      "shot_index": 61,
+      "x": 110.730356,
+      "y": 300.196432,
+      "t_ms": 4875
+    },
+    {
+      "shot_index": 62,
+      "x": 111.680659,
+      "y": 304.047515,
+      "t_ms": 4950
+    },
+    {
+      "shot_index": 63,
+      "x": 109.945599,
+      "y": 304.321447,
+      "t_ms": 5033
+    },
+    {
+      "shot_index": 64,
+      "x": 107.800983,
+      "y": 302.859306,
+      "t_ms": 5108
+    },
+    {
+      "shot_index": 65,
+      "x": 105.70014,
+      "y": 302.534554,
+      "t_ms": 5183
+    },
+    {
+      "shot_index": 66,
+      "x": 104.054568,
+      "y": 311.820147,
+      "t_ms": 5267
+    },
+    {
+      "shot_index": 67,
+      "x": 101.196833,
+      "y": 311.521265,
+      "t_ms": 5342
+    },
+    {
+      "shot_index": 68,
+      "x": 98.866233,
+      "y": 318.155819,
+      "t_ms": 5425
+    },
+    {
+      "shot_index": 69,
+      "x": 97.633441,
+      "y": 311.108389,
+      "t_ms": 5500
+    },
+    {
+      "shot_index": 70,
+      "x": 96.153454,
+      "y": 322.098681,
+      "t_ms": 5575
+    },
+    {
+      "shot_index": 71,
+      "x": 94.464741,
+      "y": 324.840485,
+      "t_ms": 5658
+    },
+    {
+      "shot_index": 72,
+      "x": 92.353749,
+      "y": 327.32014,
+      "t_ms": 5758
+    },
+    {
+      "shot_index": 73,
+      "x": 90.0,
+      "y": 330.0,
+      "t_ms": 5825
+    },
+    {
+      "shot_index": 74,
+      "x": 93.22485,
+      "y": 325.999932,
+      "t_ms": 5958
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 1
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 2,
+      "end_shot": 9
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 10,
+      "end_shot": 15
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 16,
+      "end_shot": 19
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 20,
+      "end_shot": 25
+    },
+    {
+      "segment_id": "Seq6",
+      "start_shot": 26,
+      "end_shot": 73
+    },
+    {
+      "segment_id": "Seq7",
+      "start_shot": 74,
+      "end_shot": 74
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 44.092035957665736,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:19:52.664462+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:QCQ171",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · QCQ171",
+    "zh-CN": "三角洲·QCQ171"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "QCQ171",
+  "workshop_title": "Delta Force · QCQ171 Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "QCQ171",
+        "workshop_title": "Delta Force · QCQ171 Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "QCQ171",
+        "workshop_title": "三角洲·QCQ171 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

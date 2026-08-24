@@ -1,0 +1,360 @@
+{
+  "profile_id": "a9b3b222f86a5384367e041b2de82b82",
+  "name": "Delta Force · Vityaz",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 96.177824,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 97.918413,
+      "y": 96.209717,
+      "t_ms": 83
+    },
+    {
+      "shot_index": 2,
+      "x": 98.917393,
+      "y": 100.10057,
+      "t_ms": 167
+    },
+    {
+      "shot_index": 3,
+      "x": 104.270183,
+      "y": 119.052926,
+      "t_ms": 258
+    },
+    {
+      "shot_index": 4,
+      "x": 105.070655,
+      "y": 118.49795,
+      "t_ms": 342
+    },
+    {
+      "shot_index": 5,
+      "x": 101.65963,
+      "y": 120.75329,
+      "t_ms": 425
+    },
+    {
+      "shot_index": 6,
+      "x": 98.516988,
+      "y": 137.618545,
+      "t_ms": 517
+    },
+    {
+      "shot_index": 7,
+      "x": 97.883792,
+      "y": 136.177458,
+      "t_ms": 608
+    },
+    {
+      "shot_index": 8,
+      "x": 98.487977,
+      "y": 143.398149,
+      "t_ms": 692
+    },
+    {
+      "shot_index": 9,
+      "x": 100.306351,
+      "y": 150.90048,
+      "t_ms": 775
+    },
+    {
+      "shot_index": 10,
+      "x": 101.4755,
+      "y": 155.274865,
+      "t_ms": 858
+    },
+    {
+      "shot_index": 11,
+      "x": 105.566524,
+      "y": 160.985707,
+      "t_ms": 942
+    },
+    {
+      "shot_index": 12,
+      "x": 104.054812,
+      "y": 168.905235,
+      "t_ms": 1033
+    },
+    {
+      "shot_index": 13,
+      "x": 106.609395,
+      "y": 171.086473,
+      "t_ms": 1117
+    },
+    {
+      "shot_index": 14,
+      "x": 109.123106,
+      "y": 178.150996,
+      "t_ms": 1200
+    },
+    {
+      "shot_index": 15,
+      "x": 107.953507,
+      "y": 186.846063,
+      "t_ms": 1292
+    },
+    {
+      "shot_index": 16,
+      "x": 107.406977,
+      "y": 191.093798,
+      "t_ms": 1375
+    },
+    {
+      "shot_index": 17,
+      "x": 105.898502,
+      "y": 199.002977,
+      "t_ms": 1467
+    },
+    {
+      "shot_index": 18,
+      "x": 109.516987,
+      "y": 204.904657,
+      "t_ms": 1558
+    },
+    {
+      "shot_index": 19,
+      "x": 110.05756,
+      "y": 207.690395,
+      "t_ms": 1633
+    },
+    {
+      "shot_index": 20,
+      "x": 108.712637,
+      "y": 212.773837,
+      "t_ms": 1717
+    },
+    {
+      "shot_index": 21,
+      "x": 106.01152,
+      "y": 220.517896,
+      "t_ms": 1800
+    },
+    {
+      "shot_index": 22,
+      "x": 104.106699,
+      "y": 227.43836,
+      "t_ms": 1892
+    },
+    {
+      "shot_index": 23,
+      "x": 104.799395,
+      "y": 232.889757,
+      "t_ms": 1983
+    },
+    {
+      "shot_index": 24,
+      "x": 103.020246,
+      "y": 237.822692,
+      "t_ms": 2067
+    },
+    {
+      "shot_index": 25,
+      "x": 102.350315,
+      "y": 250.085967,
+      "t_ms": 2150
+    },
+    {
+      "shot_index": 26,
+      "x": 100.621754,
+      "y": 249.122513,
+      "t_ms": 2242
+    },
+    {
+      "shot_index": 27,
+      "x": 100.179559,
+      "y": 251.394002,
+      "t_ms": 2358
+    },
+    {
+      "shot_index": 28,
+      "x": 99.532537,
+      "y": 264.981576,
+      "t_ms": 2408
+    },
+    {
+      "shot_index": 29,
+      "x": 99.525945,
+      "y": 264.380836,
+      "t_ms": 2492
+    },
+    {
+      "shot_index": 30,
+      "x": 100.391786,
+      "y": 263.682325,
+      "t_ms": 2583
+    },
+    {
+      "shot_index": 31,
+      "x": 98.930343,
+      "y": 273.454804,
+      "t_ms": 2675
+    },
+    {
+      "shot_index": 32,
+      "x": 98.773855,
+      "y": 283.454516,
+      "t_ms": 2750
+    },
+    {
+      "shot_index": 33,
+      "x": 100.752178,
+      "y": 280.425369,
+      "t_ms": 2842
+    },
+    {
+      "shot_index": 34,
+      "x": 97.498732,
+      "y": 283.343333,
+      "t_ms": 2925
+    },
+    {
+      "shot_index": 35,
+      "x": 92.263698,
+      "y": 289.31997,
+      "t_ms": 3017
+    },
+    {
+      "shot_index": 36,
+      "x": 90.231929,
+      "y": 290.514917,
+      "t_ms": 3100
+    },
+    {
+      "shot_index": 37,
+      "x": 90.0,
+      "y": 295.108646,
+      "t_ms": 3183
+    },
+    {
+      "shot_index": 38,
+      "x": 91.731196,
+      "y": 301.227274,
+      "t_ms": 3275
+    },
+    {
+      "shot_index": 39,
+      "x": 95.126248,
+      "y": 303.275163,
+      "t_ms": 3350
+    },
+    {
+      "shot_index": 40,
+      "x": 100.093275,
+      "y": 306.662235,
+      "t_ms": 3433
+    },
+    {
+      "shot_index": 41,
+      "x": 102.374925,
+      "y": 311.307825,
+      "t_ms": 3525
+    },
+    {
+      "shot_index": 42,
+      "x": 102.9603,
+      "y": 316.240359,
+      "t_ms": 3617
+    },
+    {
+      "shot_index": 43,
+      "x": 104.371403,
+      "y": 319.247239,
+      "t_ms": 3692
+    },
+    {
+      "shot_index": 44,
+      "x": 102.1118,
+      "y": 330.0,
+      "t_ms": 3783
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 4
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 5,
+      "end_shot": 7
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 8,
+      "end_shot": 18
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 19,
+      "end_shot": 37
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 38,
+      "end_shot": 43
+    },
+    {
+      "segment_id": "Seq6",
+      "start_shot": 44,
+      "end_shot": 44
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 38.385448577891246,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:20:02.430461+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:Vityaz",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · Vityaz",
+    "zh-CN": "三角洲·勇士"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "Vityaz",
+  "workshop_title": "Delta Force · Vityaz Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "Vityaz",
+        "workshop_title": "Delta Force · Vityaz Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "勇士",
+        "workshop_title": "三角洲·勇士 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

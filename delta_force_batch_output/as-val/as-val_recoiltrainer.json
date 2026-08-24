@@ -1,0 +1,355 @@
+{
+  "profile_id": "9581e9b8048cf884ca239ac31de77a34",
+  "name": "Delta Force · AS Val",
+  "points": [
+    {
+      "shot_index": 0,
+      "x": 90.0,
+      "y": 90.0,
+      "t_ms": 0
+    },
+    {
+      "shot_index": 1,
+      "x": 93.741905,
+      "y": 95.057093,
+      "t_ms": 58
+    },
+    {
+      "shot_index": 2,
+      "x": 94.682439,
+      "y": 102.024347,
+      "t_ms": 125
+    },
+    {
+      "shot_index": 3,
+      "x": 96.411476,
+      "y": 106.047817,
+      "t_ms": 183
+    },
+    {
+      "shot_index": 4,
+      "x": 97.056194,
+      "y": 111.549776,
+      "t_ms": 242
+    },
+    {
+      "shot_index": 5,
+      "x": 99.920885,
+      "y": 118.44146,
+      "t_ms": 317
+    },
+    {
+      "shot_index": 6,
+      "x": 102.949229,
+      "y": 124.634841,
+      "t_ms": 383
+    },
+    {
+      "shot_index": 7,
+      "x": 105.353933,
+      "y": 128.799431,
+      "t_ms": 433
+    },
+    {
+      "shot_index": 8,
+      "x": 106.843376,
+      "y": 133.820868,
+      "t_ms": 492
+    },
+    {
+      "shot_index": 9,
+      "x": 107.888772,
+      "y": 139.766721,
+      "t_ms": 558
+    },
+    {
+      "shot_index": 10,
+      "x": 104.498397,
+      "y": 144.621274,
+      "t_ms": 617
+    },
+    {
+      "shot_index": 11,
+      "x": 105.039556,
+      "y": 152.271653,
+      "t_ms": 675
+    },
+    {
+      "shot_index": 12,
+      "x": 101.193841,
+      "y": 157.007651,
+      "t_ms": 742
+    },
+    {
+      "shot_index": 13,
+      "x": 100.971019,
+      "y": 163.212353,
+      "t_ms": 808
+    },
+    {
+      "shot_index": 14,
+      "x": 96.276337,
+      "y": 167.057691,
+      "t_ms": 858
+    },
+    {
+      "shot_index": 15,
+      "x": 95.29149,
+      "y": 170.848912,
+      "t_ms": 925
+    },
+    {
+      "shot_index": 16,
+      "x": 93.828348,
+      "y": 176.003921,
+      "t_ms": 983
+    },
+    {
+      "shot_index": 17,
+      "x": 91.996404,
+      "y": 185.930861,
+      "t_ms": 1050
+    },
+    {
+      "shot_index": 18,
+      "x": 94.269584,
+      "y": 190.097833,
+      "t_ms": 1108
+    },
+    {
+      "shot_index": 19,
+      "x": 94.998631,
+      "y": 195.405544,
+      "t_ms": 1175
+    },
+    {
+      "shot_index": 20,
+      "x": 95.407777,
+      "y": 201.284014,
+      "t_ms": 1233
+    },
+    {
+      "shot_index": 21,
+      "x": 96.742633,
+      "y": 204.250011,
+      "t_ms": 1292
+    },
+    {
+      "shot_index": 22,
+      "x": 95.38437,
+      "y": 209.74389,
+      "t_ms": 1350
+    },
+    {
+      "shot_index": 23,
+      "x": 104.18583,
+      "y": 222.118621,
+      "t_ms": 1392
+    },
+    {
+      "shot_index": 24,
+      "x": 100.794716,
+      "y": 211.866071,
+      "t_ms": 1483
+    },
+    {
+      "shot_index": 25,
+      "x": 104.96192,
+      "y": 218.053334,
+      "t_ms": 1542
+    },
+    {
+      "shot_index": 26,
+      "x": 107.710741,
+      "y": 225.185933,
+      "t_ms": 1608
+    },
+    {
+      "shot_index": 27,
+      "x": 107.204643,
+      "y": 228.140031,
+      "t_ms": 1667
+    },
+    {
+      "shot_index": 28,
+      "x": 104.432894,
+      "y": 233.55307,
+      "t_ms": 1725
+    },
+    {
+      "shot_index": 29,
+      "x": 105.104924,
+      "y": 241.546587,
+      "t_ms": 1792
+    },
+    {
+      "shot_index": 30,
+      "x": 102.754086,
+      "y": 249.569762,
+      "t_ms": 1858
+    },
+    {
+      "shot_index": 31,
+      "x": 103.331495,
+      "y": 252.734627,
+      "t_ms": 1917
+    },
+    {
+      "shot_index": 32,
+      "x": 102.259977,
+      "y": 255.945885,
+      "t_ms": 1967
+    },
+    {
+      "shot_index": 33,
+      "x": 101.102149,
+      "y": 261.957292,
+      "t_ms": 2033
+    },
+    {
+      "shot_index": 34,
+      "x": 98.277616,
+      "y": 265.352458,
+      "t_ms": 2092
+    },
+    {
+      "shot_index": 35,
+      "x": 94.083614,
+      "y": 272.038789,
+      "t_ms": 2158
+    },
+    {
+      "shot_index": 36,
+      "x": 93.504389,
+      "y": 277.889671,
+      "t_ms": 2217
+    },
+    {
+      "shot_index": 37,
+      "x": 91.048162,
+      "y": 283.803982,
+      "t_ms": 2275
+    },
+    {
+      "shot_index": 38,
+      "x": 93.413914,
+      "y": 288.911798,
+      "t_ms": 2342
+    },
+    {
+      "shot_index": 39,
+      "x": 95.244039,
+      "y": 301.704198,
+      "t_ms": 2458
+    },
+    {
+      "shot_index": 40,
+      "x": 99.075552,
+      "y": 302.18499,
+      "t_ms": 2517
+    },
+    {
+      "shot_index": 41,
+      "x": 100.182629,
+      "y": 314.022292,
+      "t_ms": 2583
+    },
+    {
+      "shot_index": 42,
+      "x": 101.571028,
+      "y": 316.827232,
+      "t_ms": 2642
+    },
+    {
+      "shot_index": 43,
+      "x": 103.093163,
+      "y": 323.360299,
+      "t_ms": 2708
+    },
+    {
+      "shot_index": 44,
+      "x": 103.871129,
+      "y": 330.0,
+      "t_ms": 2792
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "Seq1",
+      "start_shot": 0,
+      "end_shot": 9
+    },
+    {
+      "segment_id": "Seq2",
+      "start_shot": 10,
+      "end_shot": 17
+    },
+    {
+      "segment_id": "Seq3",
+      "start_shot": 18,
+      "end_shot": 27
+    },
+    {
+      "segment_id": "Seq4",
+      "start_shot": 28,
+      "end_shot": 37
+    },
+    {
+      "segment_id": "Seq5",
+      "start_shot": 38,
+      "end_shot": 44
+    }
+  ],
+  "smoothing": "spline",
+  "device_mode": "kbm",
+  "smoothing_strength": 0.2,
+  "drum_hit_strength": 4.0,
+  "audio_spatial_style": "pitch_ypos_sphere",
+  "recorded_recoil_pitch_range_deg": 45.929475837009015,
+  "mouse_yx_ratio": 1.0,
+  "controller_yx_ratio": 0.68,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T23:19:33.413520+00:00",
+  "tags": [
+    "game:delta-force",
+    "Delta Force",
+    "weapon:AS Val",
+    "video-reconstruction",
+    "scope:2x"
+  ],
+  "localized_names": {
+    "en-US": "Delta Force · AS Val",
+    "zh-CN": "三角洲·AS Val"
+  },
+  "format_version": 1,
+  "profile_version": 1,
+  "app": "Recoil Trainer",
+  "game_name": "Delta Force",
+  "weapon_name": "AS Val",
+  "workshop_title": "Delta Force · AS Val Recoil",
+  "training_hints": "",
+  "author_note": "",
+  "data": {
+    "localizations": {
+      "en-US": {
+        "game_name": "Delta Force",
+        "weapon_name": "AS Val",
+        "workshop_title": "Delta Force · AS Val Recoil"
+      },
+      "zh-CN": {
+        "game_name": "三角洲行动",
+        "weapon_name": "AS Val",
+        "workshop_title": "三角洲·AS Val 后坐力"
+      }
+    },
+    "reconstruction": {
+      "source": "Feature Matching + RANSAC + reticle tracking",
+      "fov_degrees": 104.0,
+      "scope_magnification": 2.0,
+      "recoil_amplitude_divisor": 1.0,
+      "coordinate_source": "recoil_*_px",
+      "trajectory_corrections": []
+    }
+  },
+  "app_version": "0.1.0"
+}

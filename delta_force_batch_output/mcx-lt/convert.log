@@ -1,0 +1,13 @@
+COMMAND
+C:\XiaodeDocuments\Programs\Recoil_Reconsturct\.venv\Scripts\python.exe C:\XiaodeDocuments\Programs\Recoil_Reconsturct\convert_to_recoiltrainer.py C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\mcx-lt\keyframes_recoil.csv --output C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\mcx-lt\mcx-lt_recoiltrainer.json --name "Delta Force · MCX LT" --localized-name-en "Delta Force · MCX LT" --localized-name-zh-cn "三角洲·MCX LT" --weapon-name-en "MCX LT" --weapon-name-zh-cn "MCX LT" --game-name-en "Delta Force" --game-name-zh-cn 三角洲行动 --workshop-title-en "Delta Force · MCX LT Recoil" --workshop-title-zh-cn "三角洲·MCX LT 后坐力" --scope-magnification 2.0 --recoil-amplitude-divisor 1.0 --smoothing spline --smoothing-strength 0.2 --segmentation recoil-trainer --tags "game:delta-force,Delta Force,weapon:MCX LT,video-reconstruction,scope:2x" --recoil-trainer-root C:\XiaodeDocuments\Programs\RecoilTrainer --profile-id f945837dac8e5d6f109d305880262627
+
+STDOUT
+Wrote: C:\XiaodeDocuments\Programs\Recoil_Reconsturct\delta_force_batch_output\mcx-lt\mcx-lt_recoiltrainer.json
+Profile: Delta Force · MCX LT (f945837dac8e5d6f109d305880262627)
+Shots: 60, duration: 4308 ms, FPS: 120.0
+Source span: x=240.868px, y=1571.932px; uniform scale=0.152678371
+Recorded pitch: 46.314664 deg (summary.json FOV/scope estimate)
+Smoothing: spline 0.200; segments: 5 (recoil-trainer)
+Recoil Trainer model validation: passed
+
+STDERR
