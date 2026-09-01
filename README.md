@@ -1,5 +1,63 @@
 # Recoil Pattern Reconstruction (Feature Matching + RANSAC)
 
+## Synchronized 120 FPS Video + Raw Mouse Recording
+
+`record_mouse_video.py` passively records the selected Windows display through
+DXGI Desktop Duplication while also logging Windows Raw Input mouse packets. Both
+streams use the same QueryPerformanceCounter clock. The MP4 is a constant 120
+FPS timeline; timing gaps are filled with the previous image and disclosed in
+`session.json` and `video_frames.csv` instead of silently shortening the video.
+
+Install the dependencies once, then run the baseline recording:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe .\record_mouse_video.py --label no_fire
+```
+
+The recorder waits in the background. In Rainbow Six Siege, press `F8` to start.
+The first beep confirms recording; wait for the second beep one second later so
+the encoder is fully warm, then move the mouse through a useful mix of slow and
+fast horizontal/vertical motions without firing. Press `F8` again to stop and
+`F9` to exit the recorder. Run the firing take separately:
+
+```powershell
+.\.venv\Scripts\python.exe .\record_mouse_video.py --label recoil
+```
+
+For the firing take, start recording, begin firing, and manually pull the view
+back into the usable pitch range. The left-button state is included in the Raw
+Input log. Do not change DPI, Windows pointer settings, game sensitivity, FOV,
+optic, resolution, or display mode between the two takes.
+
+Each session is stored below `synced_captures/<timestamp>_<label>/`:
+
+- `video.mp4`: hardware-encoded constant-120-FPS capture.
+- `mouse_events.csv`: every Raw Input packet, QPC timestamp, raw X/Y counts,
+  instantaneous speed, button transitions, and input device handle.
+- `video_frames.csv`: the actual DXGI source timestamp for every encoded frame,
+  including explicit `initial_fill`, `gap_fill`, and `tail_fill` rows.
+- `mouse_by_video_frame.csv`: raw counts, velocity, cumulative movement, and left
+  button state already aggregated onto each MP4 frame.
+- `session.json`: common clock origin, capture/encoder diagnostics, achieved FPS,
+  latency percentiles, and warnings.
+
+The default capture is the entire primary display at 120 FPS. A cropped region
+reduces bandwidth if diagnostics report more than 5% timing-fill frames:
+
+```powershell
+.\.venv\Scripts\python.exe .\record_mouse_video.py --label recoil `
+  --region 0,0,1920,1080 --fps 120 --duration 15
+```
+
+Set the monitor to at least 120 Hz and keep the game's rendered frame rate at or
+above 120 if you want 120 distinct source frames rather than correctly timed
+duplicates.
+
+Use borderless/windowed-fullscreen mode if exclusive fullscreen prevents Desktop
+Duplication capture. This recorder only observes desktop frames and Raw Input; it
+does not inject mouse input, hook the game, or access game memory.
+
 By default, the script automatically scans an entire video and analyzes one complete magazine:
 
 1. It scans the current ammo count in the lower-right corner of the video and uses periodic glyph changes to detect the firing frame range, fire rate, magazine capacity, and shot count. Dynamic programming then refines the segmentation, and the first frame where the count changes from `n` to `n-1` becomes a keyframe.
