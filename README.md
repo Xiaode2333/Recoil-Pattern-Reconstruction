@@ -58,6 +58,44 @@ Use borderless/windowed-fullscreen mode if exclusive fullscreen prevents Desktop
 Duplication capture. This recorder only observes desktop frames and Raw Input; it
 does not inject mouse input, hook the game, or access game memory.
 
+## OBS Raw-Input Pair Analysis
+
+`analyze_synced_recoil.py` combines the sidecars from the native
+`obs_mouse_timeline` plugin with two OBS recordings. The no-fire reference maps
+Raw Input counts to measured camera motion; the firing take subtracts that mouse
+component from the observed view movement and emits a per-frame and per-shot
+recoil trajectory.
+
+For a formal result, record the reference while holding the same ADS optic used
+by the firing take. Keep resolution, 120 FPS, FOV, sensitivity, DPI, aspect ratio,
+operator stance, and optic unchanged:
+
+```powershell
+.\.venv\Scripts\python.exe .\analyze_synced_recoil.py `
+  "D:\captures\m4_ads_ref.mp4" `
+  "D:\captures\m4_fire.mp4" `
+  --reference-mode ads `
+  --shot-count 30 `
+  --output-dir .\m4_synced_result
+```
+
+The script infers each video's `.mouse.csv`, `.frames.csv`, and
+`.mouse-session.json` files, refuses recordings that report OBS output drops,
+finds the longest left-button hold, detects the 30 ammunition changes, and
+writes:
+
+- `recoil_per_frame.csv`: observed view motion, predicted mouse contribution,
+  and residual recoil on every video frame.
+- `recoil_per_shot.csv`: the recovered trajectory and equivalent cumulative
+  compensation in raw mouse counts.
+- `summary.json`: synchronization, fit quality, shot cadence, and an explicit
+  `formal_result_ready` quality gate.
+- `recoil_trajectory.png`: right/up-positive review plot.
+
+A hip-fire reference can be processed with the default `--reference-mode hip`
+only as a feasibility check. It is deliberately marked non-formal because the
+cross-FOV estimate is weaker than a same-ADS calibration.
+
 By default, the script automatically scans an entire video and analyzes one complete magazine:
 
 1. It scans the current ammo count in the lower-right corner of the video and uses periodic glyph changes to detect the firing frame range, fire rate, magazine capacity, and shot count. Dynamic programming then refines the segmentation, and the first frame where the count changes from `n` to `n-1` becomes a keyframe.
