@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""用镜外 Feature Matching + RANSAC 重建射击后坐力轨迹。
+"""Reconstruct a recoil trajectory with background motion and reticle tracking.
 
-坐标模型（列向量）：
+Coordinate model (column vectors):
 
     A_i : 第 i-1 帧的镜外背景像素 -> 第 i 帧
     C_i = C_(i-1) @ inv(A_i) : 第 i 帧 -> 第 start_frame 帧
     p_i = C_i @ [reticle_x_i, reticle_y_i, 1]
 
-关键点是 p_i 使用了每个关键帧实际检测到的刻度线交点，而不是固定画面中心，
-因此镜外画面运动（平移/旋转）和准星自身抖动都会进入最终轨迹。
+Each keyframe uses the detected reticle location rather than a fixed image
+center, so the final trajectory combines background SE(2) motion with reticle
+motion inside the frame.
 """
 
 from __future__ import annotations
@@ -76,9 +77,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "video",
-        nargs="?",
-        default=r"D:\DF\RM277_x1_opx2.mp4",
-        help="输入视频路径",
+        help="input video path",
     )
     parser.add_argument(
         "--start-frame",
@@ -180,7 +179,7 @@ def parse_args() -> argparse.Namespace:
         help="准星检测模式：2x 刻度线或 1x 红点（默认 tick-lines）",
     )
     parser.add_argument(
-        "--output-dir", default="recoil_output", help="CSV/JSON/可视化输出目录"
+        "--output-dir", default="reconstruction_output", help="output directory"
     )
     parser.add_argument(
         "--fov-deg",
@@ -192,7 +191,7 @@ def parse_args() -> argparse.Namespace:
         "--fov-axis",
         choices=("reference-horizontal", "horizontal", "vertical"),
         default="reference-horizontal",
-        help="FOV 模型；默认使用 Recoil Trainer 的 4:3 参考横向 FOV",
+        help="FOV convention used for the optional angular estimate",
     )
     parser.add_argument(
         "--scope-magnification",

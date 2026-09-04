@@ -3,3 +3,10 @@ __pycache__/
 inspection/
 synced_captures/
 r6_pair_analysis/
+reconstruction_output/
+batch_output/
+*.log
+*.mp4
+*.mkv
+*.avi
+.pytest_cache/

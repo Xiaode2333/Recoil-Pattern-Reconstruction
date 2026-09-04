@@ -29,7 +29,7 @@ The project follows the official OBS plugin template and builds against the OBS
 ## Recording setup
 
 1. Set OBS video FPS to 120 and output resolution to 2560x1440.
-2. Add Rainbow Six Siege using Game Capture.
+2. Add the target application using Game Capture.
 3. Select NVENC and record to MKV.
 4. Assign an OBS **Start/Stop Recording** global hotkey; no CMD focus is needed.
 5. Keep recording unpaused. Start, wait one second, perform the take, and stop.

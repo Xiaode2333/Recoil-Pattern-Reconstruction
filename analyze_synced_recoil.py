@@ -525,7 +525,7 @@ def estimate_ads_zoom(
 def ammo_change_scores(
     video: Path, info: VideoInfo, start_frame: int, end_frame: int
 ) -> tuple[np.ndarray, int]:
-    # Rainbow Six HUD current-magazine digits at the 2560x1440 reference size.
+    # Current-ammunition HUD digits at the 2560x1440 reference size.
     x0, x1 = int(round(0.875 * info.width)), int(round(0.947 * info.width))
     y0, y1 = int(round(0.835 * info.height)), int(round(0.915 * info.height))
     cap = cv2.VideoCapture(str(video))

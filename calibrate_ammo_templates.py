@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build Delta Force HUD digit templates from the verified AR57 countdown."""
+"""Build HUD digit templates from a labeled ammunition countdown."""
 
 from __future__ import annotations
 
@@ -19,11 +19,12 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--video", type=Path, default=Path(r"D:\DF\AR57.mp4"))
+    parser.add_argument("--video", type=Path, required=True)
     parser.add_argument(
         "--summary",
         type=Path,
-        default=SCRIPT_DIR / "recoil_output_ar57" / "summary.json",
+        default=None,
+        help="optional reconstruction summary containing verified keyframes",
     )
     parser.add_argument("--start-ammo", type=int, default=50)
     parser.add_argument(
@@ -36,7 +37,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 
 
 def load_keyframes(args: argparse.Namespace, display_features: np.ndarray) -> list[int]:
-    if args.summary.is_file():
+    if args.summary is not None and args.summary.is_file():
         payload = json.loads(args.summary.read_text(encoding="utf-8"))
         keyframes = [int(value) for value in payload.get("keyframes", [])]
         if len(keyframes) == args.start_ammo:
@@ -50,7 +51,7 @@ def load_keyframes(args: argparse.Namespace, display_features: np.ndarray) -> li
     )
     if len(detection.approximate_keyframes) != args.start_ammo:
         raise RuntimeError(
-            "AR57 calibration countdown did not produce the expected "
+            "Calibration countdown did not produce the expected "
             f"{args.start_ammo} events: {len(detection.approximate_keyframes)}"
         )
     return analyze_recoil.refine_keyframes_from_display(
@@ -107,7 +108,6 @@ def main(argv: Sequence[str] | None = None) -> int:
     np.savez_compressed(
         output,
         templates=templates,
-        calibration_video=str(video),
         start_ammo=start_ammo,
         roi=np.asarray(roi, dtype=np.int32),
         sample_counts=np.asarray([len(samples[digit]) for digit in range(10)]),
