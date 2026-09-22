@@ -19,7 +19,7 @@ flowchart LR
     V[120 FPS video] --> S[frame/event synchronization]
     M[Windows Raw Input] --> S
     S --> F[SIFT or ORB features]
-    F --> R[RANSAC + SE(2) motion]
+    F --> R["RANSAC + SE(2) motion"]
     S --> O[OCR/event detection]
     S --> T[reticle detection]
     R --> C[common-coordinate transform]
