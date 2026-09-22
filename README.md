@@ -4,7 +4,12 @@ Reconstruct recoil trajectories from synchronized high-frame-rate video and
 raw input using computer vision, robust geometric estimation, and time-aligned
 sensor data.
 
-![Example reconstructed trajectory](docs/assets/recoil_trajectory.png)
+![RM277 V2 Main View exported from Recoil Trainer](docs/assets/rm277_v2_main_view.png)
+
+Delta Force RM277 V2, 45 shots. Exported on September 22, 2026 from the
+current local profile using Recoil Trainer\'s Main View renderer (complete
+trajectory frame). This view shows the corrected mouse-compensation path;
+colors identify the profile\'s segments.
 
 ## Overview
 
