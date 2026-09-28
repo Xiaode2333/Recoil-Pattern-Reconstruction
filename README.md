@@ -44,6 +44,8 @@ flowchart LR
 - Scale-free SE(2) translation/rotation estimation and accumulated inverse
   transforms.
 - Reticle localization plus ammunition-display OCR/event detection.
+- Terminal-shot timing anchored to the stable empty-magazine display, with an
+  auditable correction for severe post-empty animation outliers.
 - Per-frame quality gates based on inliers, inlier ratio, reprojection error,
   step size, rotation, and reticle confidence.
 - Parallel batch processing with a machine-readable manifest.
@@ -79,6 +81,20 @@ python batch_reconstruct.py /path/to/videos \
   --output-dir batch_output --max-workers 2
 ```
 
+To export the reconstructed trajectory as a Recoil Trainer profile, supply a
+local Recoil Trainer checkout for its current auto-segmentation and validation
+logic. The checkout path can also be set with `RECOIL_TRAINER_ROOT`.
+
+```bash
+python convert_to_recoiltrainer.py reconstruction_output/keyframes_recoil.csv \
+  --name "Example weapon" \
+  --recoil-trainer-root /path/to/RecoilTrainer \
+  --output reconstruction_output/profile.json
+```
+
+For a standalone export without that checkout, use `--segmentation single
+--skip-trainer-validation` and validate the resulting profile before use.
+
 ## Outputs and validation
 
 - `keyframes_recoil.csv`: event times, common-frame reticle positions,
@@ -107,6 +123,7 @@ ignored.
 ```text
 analyze_recoil.py          video-only reconstruction pipeline
 analyze_synced_recoil.py   synchronized reference/recoil analysis
+convert_to_recoiltrainer.py optional profile export and validation
 record_mouse_video.py      DXGI + Raw Input recorder
 batch_reconstruct.py       generic parallel batch runner
 calibrate_ammo_templates.py
@@ -114,9 +131,8 @@ obs_mouse_timeline/        native OBS timing/input sidecar plugin
 docs/                      algorithms, capture notes, and sample outputs
 ```
 
-The public repository intentionally contains no commercial Recoil Trainer
-source dependency, product database importer, private captures, or
-machine-specific data paths.
+The public repository contains no vendored Recoil Trainer source, product
+database importer, private captures, or machine-specific data paths.
 
 ## Tests
 

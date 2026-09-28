@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-"""Reconstruct a recoil trajectory with background motion and reticle tracking.
+"""用镜外 Feature Matching + RANSAC 重建射击后坐力轨迹。
 
-Coordinate model (column vectors):
+坐标模型（列向量）：
 
     A_i : 第 i-1 帧的镜外背景像素 -> 第 i 帧
     C_i = C_(i-1) @ inv(A_i) : 第 i 帧 -> 第 start_frame 帧
     p_i = C_i @ [reticle_x_i, reticle_y_i, 1]
 
-Each keyframe uses the detected reticle location rather than a fixed image
-center, so the final trajectory combines background SE(2) motion with reticle
-motion inside the frame.
+关键点是 p_i 使用了每个关键帧实际检测到的刻度线交点，而不是固定画面中心，
+因此镜外画面运动（平移/旋转）和准星自身抖动都会进入最终轨迹。
 """
 
 from __future__ import annotations
@@ -30,6 +29,7 @@ import numpy as np
 REFERENCE_WIDTH = 2560
 REFERENCE_HEIGHT = 1440
 DEFAULT_AMMO_TEMPLATE_FILE = Path(__file__).resolve().with_name("ammo_digit_templates.npz")
+PIPELINE_VERSION = "delta-force-v9-temporal-ammo-viterbi"
 
 
 @dataclass
@@ -77,7 +77,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "video",
-        help="input video path",
+        help="输入视频路径",
     )
     parser.add_argument(
         "--start-frame",
@@ -102,6 +102,29 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=None,
         help="手动模式的射击数",
+    )
+    parser.add_argument(
+        "--terminal-keyframe",
+        type=int,
+        default=None,
+        help="手动模式中经弹药/画面审核确认的最后一发关键帧",
+    )
+    parser.add_argument(
+        "--reviewed-keyframes",
+        default="",
+        help="逗号分隔、逐帧审核过的关键帧；仅用于无法由 HUD 恢复的特殊连发录制",
+    )
+    parser.add_argument(
+        "--trainer-tail-extrapolation-count",
+        type=int,
+        default=0,
+        help="仅对确认未录到的尾部弹数，用此前可靠增量补齐 Trainer 轨迹；原始观测仍保留",
+    )
+    parser.add_argument(
+        "--cadence-model",
+        choices=("regular", "burst", "warmup"),
+        default="regular",
+        help="射速校验模型：普通稳定射速、连发/点射、或预热加速",
     )
     parser.add_argument(
         "--ammo-roi",
@@ -174,12 +197,18 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--reticle-mode",
-        choices=("tick-lines", "red-dot"),
+        choices=(
+            "tick-lines",
+            "red-dot",
+            "finals-red",
+            "finals-green",
+            "finals-front-sight",
+        ),
         default="tick-lines",
-        help="准星检测模式：2x 刻度线或 1x 红点（默认 tick-lines）",
+        help="准星检测模式；The Finals 可使用彩色准星或机械前准星模式",
     )
     parser.add_argument(
-        "--output-dir", default="reconstruction_output", help="output directory"
+        "--output-dir", default="recoil_output", help="CSV/JSON/可视化输出目录"
     )
     parser.add_argument(
         "--fov-deg",
@@ -191,7 +220,7 @@ def parse_args() -> argparse.Namespace:
         "--fov-axis",
         choices=("reference-horizontal", "horizontal", "vertical"),
         default="reference-horizontal",
-        help="FOV convention used for the optional angular estimate",
+        help="FOV 模型；默认使用 Recoil Trainer 的 4:3 参考横向 FOV",
     )
     parser.add_argument(
         "--scope-magnification",
@@ -471,12 +500,26 @@ def ocr_first_stable_zero(
     first_event_frame: int,
     minimum_run: int = 3,
 ) -> int:
-    """Return the first frame of the stable 000 HUD state after firing."""
+    """Return the first zero-like frame after a confirmed stable ``001`` state.
+
+    Bright smoke or reload hands can make the translucent leading cell of 000
+    resemble 100. Treat 000/100 as one zero-like run only after seeing 001;
+    this also prevents an obscured non-empty magazine (for example 004 followed
+    by reload animation) from being accepted as a completed magazine.
+    """
+    one_run = 0
+    saw_stable_one = False
     run_start: int | None = None
     run_length = 0
     for frame_index in range(first_event_frame, len(ocr_features)):
         number, error = recognize_ammo_number(ocr_features[frame_index], templates)
-        if number == 0 and error <= 0.08:
+        if number == 1 and error <= 0.08:
+            one_run += 1
+            if one_run >= 2:
+                saw_stable_one = True
+        elif not saw_stable_one:
+            one_run = 0
+        if saw_stable_one and number in {0, 100} and error <= 0.08:
             if run_start is None:
                 run_start = frame_index
             run_length += 1
@@ -674,6 +717,76 @@ def refine_keyframes_from_display(
     if any(current <= previous for previous, current in zip(refined, refined[1:])):
         fail("自动关键帧吸附后未严格递增，请改用手动弹药参数")
     return refined
+
+
+def refine_regular_clock_viterbi(
+    clock: Sequence[int],
+    features: np.ndarray,
+    frame_offset: int,
+    radius: int = 2,
+) -> list[int]:
+    """Jointly align a regular shot clock to robust n->n-1 HUD transitions.
+
+    The temporal-median change score supplies the image evidence. Dynamic
+    programming prevents a single smoke/flash frame from moving one boundary
+    independently and breaking the cyclic rate. The reviewed terminal anchor
+    is never moved.
+    """
+    if len(clock) < 2:
+        return list(clock)
+    scores = _ammo_change_scores(features)
+    baseline = float(np.median(scores))
+    scale = float(np.median(np.abs(scores - baseline))) + 1e-6
+    evidence = np.clip((scores - baseline) / scale, 0.0, 12.0)
+    target = float(np.median(np.diff(np.asarray(clock, dtype=np.float64))))
+    candidates: list[list[int]] = []
+    for index, predicted in enumerate(clock):
+        if index == len(clock) - 1:
+            candidates.append([int(predicted)])
+            continue
+        local = int(predicted) - frame_offset
+        choices = [
+            frame_offset + value
+            for value in range(max(0, local - radius), min(len(scores) - 1, local + radius) + 1)
+        ]
+        candidates.append(choices or [int(predicted)])
+
+    costs: list[dict[int, float]] = []
+    parents: list[dict[int, int]] = []
+    for index, choices in enumerate(candidates):
+        row: dict[int, float] = {}
+        parent_row: dict[int, int] = {}
+        for choice in choices:
+            local = choice - frame_offset
+            emission = -float(evidence[local]) + 0.20 * (choice - clock[index]) ** 2
+            if index == 0:
+                row[choice] = emission
+                continue
+            best_parent = None
+            best_cost = math.inf
+            for previous, previous_cost in costs[-1].items():
+                interval = choice - previous
+                if interval <= 0:
+                    continue
+                transition = 1.25 * (interval - target) ** 2
+                candidate_cost = previous_cost + transition + emission
+                if candidate_cost < best_cost:
+                    best_cost = candidate_cost
+                    best_parent = previous
+            if best_parent is not None:
+                row[choice] = best_cost
+                parent_row[choice] = best_parent
+        if not row:
+            return list(clock)
+        costs.append(row)
+        parents.append(parent_row)
+    current = min(costs[-1], key=costs[-1].get)
+    result = [current]
+    for index in range(len(clock) - 1, 0, -1):
+        current = parents[index][current]
+        result.append(current)
+    result.reverse()
+    return result
 
 
 def estimate_pitch_range_deg(
@@ -1297,6 +1410,104 @@ def detect_reticle_red_dot(frame: np.ndarray) -> ReticleResult:
     )
 
 
+def detect_finals_colored_reticle(frame: np.ndarray, color: str) -> ReticleResult:
+    """Locate The Finals' red/green optic glyph and use its centre as POI.
+
+    The glyph moves independently inside the optic during recoil.  A compact
+    central chroma mask therefore tracks the actual sight indication instead
+    of assuming that the screen centre is the bullet position.
+    """
+    height, width = frame.shape[:2]
+    center_x, center_y = width / 2.0, height / 2.0
+    scale = min(width / REFERENCE_WIDTH, height / REFERENCE_HEIGHT)
+    radius_x = max(90, int(round(180 * scale)))
+    radius_y = max(70, int(round(140 * scale)))
+    x0 = max(0, int(round(center_x)) - radius_x)
+    x1 = min(width, int(round(center_x)) + radius_x + 1)
+    y0 = max(0, int(round(center_y)) - radius_y)
+    y1 = min(height, int(round(center_y)) + radius_y + 1)
+    crop = frame[y0:y1, x0:x1]
+    blue, green, red = cv2.split(crop)
+    b16 = blue.astype(np.int16)
+    g16 = green.astype(np.int16)
+    r16 = red.astype(np.int16)
+    if color == "green":
+        chroma = g16 - np.maximum(r16, b16)
+        mask = (green > 100) & (chroma > 22)
+    else:
+        chroma = r16 - np.maximum(g16, b16)
+        mask = (red > 100) & (chroma > 22)
+    mask_u8 = cv2.morphologyEx(
+        mask.astype(np.uint8), cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8)
+    )
+    count, labels, stats, _ = cv2.connectedComponentsWithStats(mask_u8, 8)
+    candidates: list[tuple[float, float, float, float]] = []
+    for label in range(1, count):
+        left, top, component_width, component_height, area = map(int, stats[label])
+        if area < max(8, int(12 * scale * scale)) or area > int(5000 * scale * scale):
+            continue
+        if component_width < 4 or component_height < 3:
+            continue
+        component = labels == label
+        ys, xs = np.nonzero(component)
+        weights = np.maximum(chroma[component].astype(np.float64), 1.0)
+        glyph_x = float(x0 + np.average(xs, weights=weights))
+        glyph_y = float(y0 + np.average(ys, weights=weights))
+        distance = math.hypot(glyph_x - center_x, glyph_y - center_y)
+        if distance > max(30.0, 45.0 * scale):
+            continue
+        score = float(np.mean(chroma[component])) + 0.06 * area - 1.50 * distance
+        candidates.append((score, glyph_x, glyph_y, float(np.mean(chroma[component]))))
+    if not candidates:
+        fail(f"The Finals {color} reticle detection failed")
+    score, x, y, purity = max(candidates, key=lambda item: item[0])
+    return ReticleResult(x, y, 0.0, score, purity, score - purity)
+
+
+def detect_finals_front_sight(frame: np.ndarray) -> ReticleResult:
+    """Track the top of the central iron-sight post used as the actual POI."""
+    height, width = frame.shape[:2]
+    center_x, center_y = width / 2.0, height / 2.0
+    scale = min(width / REFERENCE_WIDTH, height / REFERENCE_HEIGHT)
+    half_width = max(70, int(round(105 * scale)))
+    up = max(120, int(round(190 * scale)))
+    down = max(130, int(round(190 * scale)))
+    x0 = int(round(center_x)) - half_width
+    y0 = int(round(center_y)) - up
+    crop = frame[y0 : int(round(center_y)) + down, x0 : int(round(center_x)) + half_width]
+    gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    darkness = cv2.GaussianBlur(gray, (0, 0), max(5.0, 9.0 * scale)) - gray
+    local_cx = half_width
+    best: tuple[float, int, int] | None = None
+    y_min = max(16, up - int(round(50 * scale)))
+    y_max = min(darkness.shape[0] - int(round(48 * scale)), up + int(round(50 * scale)))
+    x_radius = max(10, int(round(14 * scale)))
+    stem_length = max(24, int(round(44 * scale)))
+    stem_half = max(1, int(round(2 * scale)))
+    side_near = max(6, int(round(8 * scale)))
+    side_far = max(side_near + 2, int(round(16 * scale)))
+    for y in range(y_min, y_max):
+        for x in range(local_cx - x_radius, local_cx + x_radius + 1):
+            stem = float(np.mean(darkness[y : y + stem_length, x - stem_half : x + stem_half + 1]))
+            sides = 0.5 * (
+                float(np.mean(darkness[y + 4 : y + stem_length, x - side_far : x - side_near]))
+                + float(np.mean(darkness[y + 4 : y + stem_length, x + side_near : x + side_far]))
+            )
+            above = float(np.mean(darkness[y - 12 : y - 3, x - 3 : x + 4]))
+            # The true post remains close to the optical axis; this rejects
+            # circular sight guards and the tall M60 protective ears.
+            score = stem - 0.38 * sides - 0.22 * max(0.0, above) - 0.50 * abs(x - local_cx)
+            if best is None or score > best[0]:
+                best = (score, x, y)
+    if best is None or not math.isfinite(best[0]):
+        fail("The Finals front-sight detection failed")
+    score, x, y = best
+    return ReticleResult(
+        x=float(x0 + x), y=float(y0 + y), angle_deg=0.0,
+        confidence=float(score), horizontal_score=float(score), vertical_score=float(score),
+    )
+
+
 def detect_reticle(
     frame: np.ndarray,
     mode: str,
@@ -1305,7 +1516,53 @@ def detect_reticle(
 ) -> ReticleResult:
     if mode == "red-dot":
         return detect_reticle_red_dot(frame)
+    if mode == "finals-red":
+        return detect_finals_colored_reticle(frame, "red")
+    if mode == "finals-green":
+        return detect_finals_colored_reticle(frame, "green")
+    if mode == "finals-front-sight":
+        return detect_finals_front_sight(frame)
     return detect_reticle_crosshair(frame, max_angle_deg, angle_step_deg)
+
+
+def interpolate_occluded_reticle(
+    video: Path,
+    frame_index: int,
+    mode: str,
+    max_angle: float,
+    angle_step: float,
+    radius: int = 3,
+) -> ReticleResult:
+    """Interpolate a muzzle-flash-occluded reticle from visible neighbors."""
+    observations: dict[int, ReticleResult] = {}
+    capture = cv2.VideoCapture(str(video))
+    for offset in (*range(-1, -radius - 1, -1), *range(1, radius + 1)):
+        sample_frame = frame_index + offset
+        if sample_frame < 0:
+            continue
+        try:
+            image = seek_and_read(capture, sample_frame)
+            observations[sample_frame] = detect_reticle(
+                image, mode, max_angle, angle_step
+            )
+        except RuntimeError:
+            continue
+    capture.release()
+    before = max((value for value in observations if value < frame_index), default=None)
+    after = min((value for value in observations if value > frame_index), default=None)
+    if before is None or after is None:
+        fail(f"关键帧 {frame_index} 的准星被遮挡，且前后帧不足以插值")
+    left, right = observations[before], observations[after]
+    weight = (frame_index - before) / (after - before)
+    lerp = lambda a, b: float(a + weight * (b - a))
+    return ReticleResult(
+        x=lerp(left.x, right.x),
+        y=lerp(left.y, right.y),
+        angle_deg=lerp(left.angle_deg, right.angle_deg),
+        confidence=max(0.01, min(left.confidence, right.confidence) * 0.5),
+        horizontal_score=lerp(left.horizontal_score, right.horizontal_score),
+        vertical_score=lerp(left.vertical_score, right.vertical_score),
+    )
 
 
 def imwrite(path: Path, image: np.ndarray, quality: int | None = None) -> None:
@@ -1572,11 +1829,84 @@ def apply_terminal_empty_animation_repair(
     ]
 
 
+def apply_reviewed_tail_extrapolation(
+    rows: list[dict[str, object]], count: int
+) -> list[dict[str, object]]:
+    """Replace a reviewed unrecorded tail in trainer columns, preserving raw data."""
+    if count <= 0:
+        return []
+    if count >= len(rows) - 2:
+        fail("trainer-tail-extrapolation-count 过大")
+    first = len(rows) - count
+    reliable = rows[max(1, first - 12) : first]
+    dx_values = [float(row["shot_delta_x_right_px"]) for row in reliable]
+    positive_dy = [
+        float(row["shot_delta_y_up_px"])
+        for row in reliable
+        if float(row["shot_delta_y_up_px"]) > 0
+    ]
+    if not positive_dy:
+        fail("无法从可靠尾段得到向上的后坐力增量")
+    replacement_dx = float(np.median(dx_values))
+    replacement_dy = float(np.median(positive_dy))
+    corrections: list[dict[str, object]] = []
+    for index in range(first, len(rows)):
+        previous = rows[index - 1]
+        row = rows[index]
+        row["trainer_recoil_x_right_px"] = float(previous["trainer_recoil_x_right_px"]) + replacement_dx
+        row["trainer_recoil_y_up_px"] = float(previous["trainer_recoil_y_up_px"]) + replacement_dy
+        row["trainer_shot_delta_x_right_px"] = replacement_dx
+        row["trainer_shot_delta_y_up_px"] = replacement_dy
+        row["trajectory_correction"] = "reviewed-unrecorded-tail-robust-extrapolation"
+        corrections.append(
+            {
+                "shot": int(row["shot"]),
+                "reason": "reviewed-unrecorded-tail-robust-extrapolation",
+                "raw_delta_x_right_px": float(row["shot_delta_x_right_px"]),
+                "raw_delta_y_up_px": float(row["shot_delta_y_up_px"]),
+                "replacement_delta_x_right_px": replacement_dx,
+                "replacement_delta_y_up_px": replacement_dy,
+            }
+        )
+    return corrections
+
+
 def write_csv(path: Path, rows: Iterable[dict[str, object]], fieldnames: Sequence[str]) -> None:
     with path.open("w", newline="", encoding="utf-8-sig") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
+
+
+def audit_keyframe_cadence(keyframes: Sequence[int], model: str) -> dict[str, object]:
+    """Validate cadence while preserving legitimate burst and warmup patterns."""
+    intervals = [int(b - a) for a, b in zip(keyframes, keyframes[1:])]
+    if not intervals:
+        return {"model": model, "passed": True, "intervals": intervals, "violations": []}
+    median = float(np.median(intervals))
+    violations: list[dict[str, object]] = []
+    if model == "regular":
+        tolerance = max(2.0, median * 0.20)
+        for index, value in enumerate(intervals, start=2):
+            if abs(value - median) > tolerance:
+                violations.append({"shot": index, "interval_frames": value, "reason": "unstable_regular_cadence"})
+    elif model == "burst":
+        # Trigger timing can vary between bursts; only reject intervals too
+        # short to be a real cyclic shot or implausibly long for this capture.
+        for index, value in enumerate(intervals, start=2):
+            if value < 4 or value > max(12, median * 4.0):
+                violations.append({"shot": index, "interval_frames": value, "reason": "invalid_burst_cadence"})
+    else:
+        for index, (previous, value) in enumerate(zip(intervals, intervals[1:]), start=3):
+            if value > previous + max(3, round(previous * 0.35)) or value < max(2, previous * 0.45):
+                violations.append({"shot": index, "interval_frames": value, "reason": "invalid_warmup_cadence_change"})
+    return {
+        "model": model,
+        "passed": not violations,
+        "median_interval_frames": median,
+        "intervals": intervals,
+        "violations": violations,
+    }
 
 
 def main() -> int:
@@ -1600,6 +1930,10 @@ def main() -> int:
     ):
         fail("手动模式必须同时提供 start-frame、end-frame、start-ammo、shot-count")
     auto_ammo = all(value is None for value in manual_values)
+    if auto_ammo and args.terminal_keyframe is not None:
+        fail("terminal-keyframe 只能与完整的手动弹药参数一起使用")
+    if auto_ammo and args.reviewed_keyframes:
+        fail("reviewed-keyframes 只能用于完整手动模式")
     ammo_detection: AmmoDetection | None = None
     ammo_ocr_error: float | None = None
     ammo_zero_frame: int | None = None
@@ -1707,6 +2041,10 @@ def main() -> int:
             )
         if shot_count <= 0 or start_ammo < shot_count:
             fail("shot-count 必须大于 0，且 start-ammo 不能小于 shot-count")
+        if args.terminal_keyframe is not None and not (
+            start_frame < args.terminal_keyframe <= end_frame
+        ):
+            fail("terminal-keyframe 必须位于手动分析范围内且晚于 start-frame")
         print(
             f"[1/4] 视频 {width}x{height} @ {fps:.3f} fps；"
             f"手动提取弹药 ROI {ammo_roi} ...",
@@ -1715,22 +2053,116 @@ def main() -> int:
         ammo_features = extract_ammo_features(video, start_frame, end_frame, ammo_roi)
         cadence_weight = args.ammo_cadence_weight
 
-    endpoints = segment_fixed_count_sequence(
-        ammo_features,
-        segment_count=shot_count + 1,
-        min_length=args.ammo_min_segment,
-        max_length=(
-            max(args.ammo_max_segment, args.ammo_max_segment * 3)
-            if ammo_detection is not None
-            else args.ammo_max_segment
-        ),
-        cadence_weight=cadence_weight,
+    reviewed_keyframes = (
+        [int(value.strip()) for value in args.reviewed_keyframes.split(",") if value.strip()]
+        if args.reviewed_keyframes else []
     )
-    keyframes = [start_frame + endpoint for endpoint in endpoints[:-1]]
-    if ammo_detection is not None:
-        keyframes = refine_keyframes_from_display(keyframes, display_features)
+    if reviewed_keyframes:
+        if len(reviewed_keyframes) != shot_count:
+            fail(f"reviewed-keyframes 数量异常: {len(reviewed_keyframes)} != {shot_count}")
+        if reviewed_keyframes != sorted(set(reviewed_keyframes)):
+            fail("reviewed-keyframes 必须严格递增且不重复")
+        if reviewed_keyframes[0] < start_frame or reviewed_keyframes[-1] > end_frame:
+            fail("reviewed-keyframes 超出手动分析范围")
+        if args.terminal_keyframe is not None and reviewed_keyframes[-1] != args.terminal_keyframe:
+            fail("reviewed-keyframes 的末帧必须等于 terminal-keyframe")
+        keyframes = reviewed_keyframes
+        provisional = keyframes
+    elif ammo_detection is not None:
+        # Segment only the non-empty states and hard-lock the last shot to the
+        # independently OCR-confirmed first stable 000 frame. Including a full
+        # post-zero cadence in the DP lets its equal-duration penalty push the
+        # terminal boundary into ADS-exit/reload animation.
+        assert ammo_stable_zero_frame is not None
+        pre_zero_features = full_ammo_features[
+            start_frame:ammo_stable_zero_frame
+        ]
+        endpoints = segment_fixed_count_sequence(
+            pre_zero_features,
+            segment_count=shot_count,
+            min_length=args.ammo_min_segment,
+            max_length=max(args.ammo_max_segment, args.ammo_max_segment * 3),
+            cadence_weight=cadence_weight,
+        )
+        provisional = [start_frame + endpoint for endpoint in endpoints]
+        keyframes = refine_keyframes_from_display(
+            provisional[:-1], display_features
+        ) + [ammo_stable_zero_frame]
+    elif args.terminal_keyframe is not None:
+        terminal_keyframe = int(args.terminal_keyframe)
+        pre_terminal_features = ammo_features[: terminal_keyframe - start_frame]
+        endpoints = segment_fixed_count_sequence(
+            pre_terminal_features,
+            segment_count=shot_count,
+            min_length=args.ammo_min_segment,
+            max_length=max(args.ammo_max_segment, args.ammo_max_segment * 3),
+            cadence_weight=cadence_weight,
+        )
+        provisional = [start_frame + endpoint for endpoint in endpoints]
+        keyframes = refine_keyframes_from_display(
+            provisional[:-1], ammo_features, radius=4
+        ) + [terminal_keyframe]
+    else:
+        endpoints = segment_fixed_count_sequence(
+            ammo_features,
+            segment_count=shot_count + 1,
+            min_length=args.ammo_min_segment,
+            max_length=args.ammo_max_segment,
+            cadence_weight=cadence_weight,
+        )
+        keyframes = [start_frame + endpoint for endpoint in endpoints[:-1]]
+        # Fixed-count capture ranges still benefit from snapping each dynamic-
+        # programming boundary to the strongest local HUD glyph transition.
+        local_keyframes = [frame - start_frame for frame in keyframes]
+        keyframes = [
+            start_frame + frame
+            for frame in refine_keyframes_from_display(
+                local_keyframes, ammo_features, radius=4
+            )
+        ]
     if len(keyframes) != shot_count:
         fail(f"关键帧数量异常: {len(keyframes)} != {shot_count}")
+    keyframe_decoder = "fixed-state-segmentation"
+    if args.cadence_model == "regular" and not reviewed_keyframes:
+        stable_clock = [
+            int(round(value))
+            for value in np.linspace(keyframes[0], keyframes[-1], shot_count)
+        ]
+        decoder_features = display_features if ammo_detection is not None else ammo_features
+        decoder_offset = 0 if ammo_detection is not None else start_frame
+        decoded_keyframes = refine_regular_clock_viterbi(
+            stable_clock, decoder_features, decoder_offset
+        )
+        decoded_audit = audit_keyframe_cadence(decoded_keyframes, args.cadence_model)
+        if decoded_audit["passed"] and len(set(decoded_keyframes)) == shot_count:
+            keyframes = decoded_keyframes
+            keyframe_decoder = "cadence-constrained-temporal-median-viterbi"
+    cadence_audit = audit_keyframe_cadence(keyframes, args.cadence_model)
+    if not cadence_audit["passed"] and args.cadence_model == "regular":
+        # HUD peak snapping can select smoke/reload edges. The joint-state DP
+        # candidate is preferred when it alone restores an ordinary gun's
+        # stable firing rhythm.
+        locked_terminal = keyframes[-1]
+        cadence_candidate = provisional[:-1] + [locked_terminal]
+        candidate_audit = audit_keyframe_cadence(cadence_candidate, args.cadence_model)
+        if candidate_audit["passed"]:
+            keyframes = cadence_candidate
+            cadence_audit = candidate_audit
+        else:
+            # An ordinary automatic weapon has a fixed cyclic rate. Anchor the
+            # first DP transition and the independently reviewed final shot,
+            # then quantize the intervening shot clock to video frames. This
+            # prevents muzzle flash/HUD smoke from fabricating early/late shots.
+            stable_clock = [
+                int(round(value))
+                for value in np.linspace(provisional[0], locked_terminal, shot_count)
+            ]
+            clock_audit = audit_keyframe_cadence(stable_clock, args.cadence_model)
+            if clock_audit["passed"] and len(set(stable_clock)) == shot_count:
+                keyframes = stable_clock
+                cadence_audit = clock_audit
+    if not cadence_audit["passed"]:
+        fail(f"射速校验失败 ({args.cadence_model}): {cadence_audit['violations']}")
     if ammo_detection is not None:
         # The final fixed-state boundary is the actual first 000 frame used as
         # the last shot keyframe.  Shrink the provisional tail so feature/RANSAC
@@ -1794,6 +2226,7 @@ def main() -> int:
     }
     keyframe_set = set(keyframes)
     debug_crops: list[np.ndarray] = []
+    reticle_interpolated_keyframes: list[int] = []
     for frame_index in range(start_frame + 1, end_frame + 1):
         ok, frame = cap.read()
         if not ok:
@@ -1805,12 +2238,22 @@ def main() -> int:
         )
         previous_features = current_features
         if frame_index in keyframe_set:
-            reticle = detect_reticle(
-                frame,
-                args.reticle_mode,
-                args.reticle_max_angle,
-                args.reticle_angle_step,
-            )
+            try:
+                reticle = detect_reticle(
+                    frame,
+                    args.reticle_mode,
+                    args.reticle_max_angle,
+                    args.reticle_angle_step,
+                )
+            except RuntimeError:
+                reticle = interpolate_occluded_reticle(
+                    video,
+                    frame_index,
+                    args.reticle_mode,
+                    args.reticle_max_angle,
+                    args.reticle_angle_step,
+                )
+                reticle_interpolated_keyframes.append(frame_index)
             reticle_by_frame[frame_index] = reticle
             shot = keyframes.index(frame_index) + 1
             debug_crops.append(
@@ -1897,6 +2340,11 @@ def main() -> int:
         previous_pose = pose
 
     trajectory_corrections = apply_terminal_empty_animation_repair(key_rows)
+    trajectory_corrections.extend(
+        apply_reviewed_tail_extrapolation(
+            key_rows, args.trainer_tail_extrapolation_count
+        )
+    )
 
     all_rows: list[dict[str, object]] = []
     for index, (step, pose) in enumerate(zip(steps, cumulative_to_reference)):
@@ -1950,7 +2398,7 @@ def main() -> int:
         scope_magnification=args.scope_magnification,
     )
     summary = {
-        "pipeline_version": "delta-force-v6-joint-zero-boundary",
+        "pipeline_version": PIPELINE_VERSION,
         "video": str(video),
         "video_width": width,
         "video_height": height,
@@ -1970,6 +2418,13 @@ def main() -> int:
             for frame_index in keyframes
         ],
         "interval_lengths": interval_lengths,
+        "cadence_audit": cadence_audit,
+        "terminal_keyframe_source": (
+            "manual-reviewed-keyframes" if reviewed_keyframes
+            else "manual-reviewed" if args.terminal_keyframe is not None
+            else "ocr-stable-zero"
+        ),
+        "keyframe_decoder": keyframe_decoder,
         "failed_steps_interpolated": failed_count,
         "detector": args.detector,
         "feature_scale": args.feature_scale,
@@ -1981,6 +2436,7 @@ def main() -> int:
         "minimum_reticle_confidence": min(
             result.confidence for result in reticle_by_frame.values()
         ),
+        "reticle_interpolated_keyframes": reticle_interpolated_keyframes,
         "reticle_mode": args.reticle_mode,
         "minimum_inlier_ratio": min(
             step.inlier_ratio for step in steps[1:] if step.status != "interpolated"

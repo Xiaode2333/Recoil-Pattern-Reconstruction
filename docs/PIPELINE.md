@@ -18,7 +18,10 @@ reticle inside the frame.
 ## Stages
 
 1. Detect the firing interval from ammunition-display changes, or accept manual
-   start/end frames for data without a compatible display.
+   start/end frames for data without a compatible display. The automatic path
+   reads the starting count and stable zero state with OCR, then refines shot
+   times against the full countdown so late HUD animations cannot become an
+   extra shot. Manual captures can anchor a reviewed terminal keyframe.
 2. Mask the optic, foreground object, HUD, and transient flashes.
 3. Extract SIFT features (ORB is available as a fallback), perform KNN matching,
    and apply Lowe's ratio test.
@@ -26,7 +29,9 @@ reticle inside the frame.
    miss the configured inlier, reprojection-error, translation, or rotation gates.
 5. Detect the reticle independently at each event keyframe.
 6. Transform keyframe reticle locations into a common coordinate system and
-   write the trajectory, diagnostics, and review figures.
+   write the trajectory, diagnostics, and review figures. Severe terminal
+   post-empty animation outliers receive separate corrected export columns;
+   the raw reconstruction and the correction record remain available for review.
 
 ## Quality gates
 

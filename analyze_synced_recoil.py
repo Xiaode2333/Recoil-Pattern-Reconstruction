@@ -73,6 +73,43 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--motion-scale", type=float, default=0.375)
     parser.add_argument("--max-shift", type=int, default=10)
+    parser.add_argument(
+        "--calibration-window",
+        type=int,
+        default=9,
+        help="Rolling frame window used for mouse/camera calibration",
+    )
+    parser.add_argument(
+        "--expected-rpm",
+        type=float,
+        default=None,
+        help="Nominal weapon RPM used to constrain shot cadence detection",
+    )
+    parser.add_argument(
+        "--ammo-slot",
+        choices=("primary", "secondary"),
+        default="primary",
+        help="HUD row containing the actively fired weapon",
+    )
+    parser.add_argument(
+        "--baseline-cache",
+        type=Path,
+        default=None,
+        help="Reuse/write ADS reference calibration so a batch analyzes it only once",
+    )
+    parser.add_argument("--fov-deg", type=float, default=90.0)
+    parser.add_argument(
+        "--fov-axis",
+        choices=("reference-horizontal", "horizontal", "vertical"),
+        default="horizontal",
+    )
+    parser.add_argument("--scope-magnification", type=float, default=1.0)
+    parser.add_argument(
+        "--ads-fov-multiplier",
+        type=float,
+        default=1.0,
+        help="Game-specific ADS FOV multiplier (Rainbow Six 1x uses 0.9)",
+    )
     return parser.parse_args()
 
 
@@ -166,11 +203,56 @@ def button_intervals(
     return intervals
 
 
-def main_interval(rows: Sequence[dict[str, int]], down: int, up: int) -> ButtonInterval:
+def main_interval(
+    rows: Sequence[dict[str, int]],
+    down: int,
+    up: int,
+    *,
+    allow_open: bool = False,
+    end_output_frame: int | None = None,
+) -> ButtonInterval:
     intervals = button_intervals(rows, down, up)
-    if not intervals:
+    if intervals:
+        return max(intervals, key=lambda item: item.duration_frames)
+    if not allow_open:
         fail("No complete button interval was found")
-    return max(intervals, key=lambda item: item.duration_frames)
+
+    down_rows = [row for row in rows if row["button_flags"] & down]
+    up_rows = [row for row in rows if row["button_flags"] & up]
+    if up_rows:
+        # Captures commonly start after ADS is already held.  A lone release
+        # therefore means the interval began before output frame zero.
+        release = up_rows[-1]
+        return ButtonInterval(
+            start_output_frame=0,
+            end_output_frame=release["output_frame_count"],
+            start_session_ns=0,
+            end_session_ns=release["session_time_ns"],
+        )
+    if down_rows:
+        press = down_rows[0]
+        final_frame = (
+            int(end_output_frame)
+            if end_output_frame is not None
+            else int(rows[-1]["output_frame_count"])
+        )
+        return ButtonInterval(
+            start_output_frame=press["output_frame_count"],
+            end_output_frame=final_frame,
+            start_session_ns=press["session_time_ns"],
+            end_session_ns=rows[-1]["session_time_ns"],
+        )
+    final_frame = (
+        int(end_output_frame)
+        if end_output_frame is not None
+        else int(rows[-1]["output_frame_count"])
+    )
+    return ButtonInterval(
+        start_output_frame=0,
+        end_output_frame=final_frame,
+        start_session_ns=0,
+        end_session_ns=rows[-1]["session_time_ns"],
+    )
 
 
 def aggregate_mouse(rows: Sequence[dict[str, int]], length: int) -> np.ndarray:
@@ -417,8 +499,10 @@ def calibrate_mouse(
     start: int,
     end: int,
     max_shift: int,
+    window: int = 9,
 ) -> dict[str, float | int]:
-    window = 9
+    if window < 1 or window % 2 == 0:
+        fail("calibration-window must be a positive odd integer")
     camera_window = rolling_sum(camera, window)
     mouse_window = rolling_sum(mouse, window)
     reliable_window = np.convolve(
@@ -523,11 +607,23 @@ def estimate_ads_zoom(
 
 
 def ammo_change_scores(
-    video: Path, info: VideoInfo, start_frame: int, end_frame: int
+    video: Path,
+    info: VideoInfo,
+    start_frame: int,
+    end_frame: int,
+    ammo_slot: str,
 ) -> tuple[np.ndarray, int]:
-    # Current-ammunition HUD digits at the 2560x1440 reference size.
-    x0, x1 = int(round(0.875 * info.width)), int(round(0.947 * info.width))
-    y0, y1 = int(round(0.835 * info.height)), int(round(0.915 * info.height))
+    # Rainbow Six HUD current-magazine digits at the 2560x1440 reference size.
+    # The rows have different vertical positions.  Keeping the crop on the
+    # active row's digits prevents weapon icons, the inactive row, and the
+    # translucent HUD background from creating a valid-looking phase shift.
+    x0, x1 = int(round(0.872 * info.width)), int(round(0.921 * info.width))
+    if ammo_slot == "primary":
+        y0, y1 = int(round(0.866 * info.height)), int(round(0.923 * info.height))
+    elif ammo_slot == "secondary":
+        y0, y1 = int(round(0.903 * info.height)), int(round(0.966 * info.height))
+    else:
+        fail(f"Unsupported ammo slot: {ammo_slot}")
     cap = cv2.VideoCapture(str(video))
     cap.set(cv2.CAP_PROP_POS_FRAMES, start_frame)
     features: list[np.ndarray] = []
@@ -568,11 +664,26 @@ def detect_regular_shots(
     first_min: int,
     first_max: int,
     fps: float,
+    expected_rpm: float | None = None,
 ) -> tuple[list[int], dict[str, float]]:
     best_score = -math.inf
     best_frames: list[int] = []
     best_period = math.nan
-    for period in np.linspace(8.0, 12.5, 181):
+    if expected_rpm is not None:
+        if not math.isfinite(expected_rpm) or expected_rpm <= 0:
+            fail("expected-rpm must be a positive finite number")
+        nominal_period = 60.0 * fps / expected_rpm
+        # Weapon metadata is used as a clock constraint, not as a replacement
+        # for measured timing.  Search a narrow band, then select the strongest
+        # real HUD transition within one source frame of each clock tick.
+        periods = np.linspace(nominal_period * 0.99, nominal_period * 1.01, 81)
+        local_radius = 1
+    else:
+        # 120 FPS captures range from roughly 575 RPM primaries to 1270 RPM
+        # machine pistols.  Keep the legacy detector useful without metadata.
+        periods = np.linspace(4.8, 15.0, 409)
+        local_radius = 2
+    for period in periods:
         for first in np.linspace(first_min, first_max, (first_max - first_min) * 4 + 1):
             predicted = first + period * np.arange(expected_count)
             if predicted[-1] >= absolute_start + len(scores) - 2:
@@ -581,8 +692,8 @@ def detect_regular_shots(
             strengths: list[float] = []
             for center in predicted:
                 local_center = int(round(center)) - absolute_start
-                left = max(1, local_center - 2)
-                right = min(len(scores), local_center + 3)
+                left = max(1, local_center - local_radius)
+                right = min(len(scores), local_center + local_radius + 1)
                 if right <= left:
                     break
                 local = left + int(np.argmax(scores[left:right]))
@@ -591,7 +702,7 @@ def detect_regular_shots(
             if len(chosen) != expected_count or any(b <= a for a, b in zip(chosen, chosen[1:])):
                 continue
             intervals = np.diff(chosen)
-            cadence_penalty = 0.15 * float(np.std(intervals))
+            cadence_penalty = 1.0 * float(np.std(intervals))
             value = float(np.sum(strengths)) - cadence_penalty
             if value > best_score:
                 best_score = value
@@ -608,6 +719,24 @@ def detect_regular_shots(
         "estimated_rpm": 60.0 * fps / float(np.mean(np.diff(best_frames))),
         "mean_change_score": float(np.mean([scores[frame - absolute_start] for frame in best_frames])),
     }
+
+
+def locate_first_ammo_change(
+    scores: np.ndarray,
+    absolute_start: int,
+    search_start: int,
+    search_end: int,
+    threshold: float = 0.12,
+) -> int:
+    left = max(1, search_start - absolute_start)
+    right = min(len(scores), search_end - absolute_start + 1)
+    candidates = np.flatnonzero(scores[left:right] >= threshold)
+    if not len(candidates):
+        fail(
+            "Could not locate the first active-row ammo change "
+            f"at normalized score >= {threshold:.3f}"
+        )
+    return absolute_start + left + int(candidates[0])
 
 
 def write_csv(path: Path, rows: Iterable[dict[str, object]], fields: Sequence[str]) -> None:
@@ -667,8 +796,13 @@ def draw_trajectory(rows: Sequence[dict[str, object]], path: Path) -> None:
             )
     cv2.putText(canvas, "Mouse-compensated recoil: right / up", (40, 55), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (25, 25, 25), 2, cv2.LINE_AA)
     cv2.putText(canvas, "1", (zero[0] + 12, zero[1] - 12), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (40, 120, 40), 2, cv2.LINE_AA)
-    if not cv2.imwrite(str(path), canvas):
-        fail(f"Could not write {path}")
+    ok, encoded = cv2.imencode(path.suffix or ".png", canvas)
+    if not ok:
+        fail(f"Could not encode {path}")
+    try:
+        encoded.tofile(path)
+    except OSError as exc:
+        fail(f"Could not write {path}: {exc}")
 
 
 def main() -> int:
@@ -689,7 +823,6 @@ def main() -> int:
     recoil_base = locate_sidecar_base(recoil_video)
     baseline_session = load_session(baseline_base)
     recoil_session = load_session(recoil_base)
-    baseline_rows = load_mouse_rows(baseline_base)
     recoil_rows = load_mouse_rows(recoil_base)
     if int(baseline_session.get("output_dropped_frames", -1)) != 0:
         fail("Baseline OBS recording reports dropped frames")
@@ -697,33 +830,89 @@ def main() -> int:
         fail("Recoil OBS recording reports dropped frames")
 
     left_hold = main_interval(recoil_rows, LEFT_DOWN, LEFT_UP)
-    right_hold = main_interval(recoil_rows, RIGHT_DOWN, RIGHT_UP)
-    baseline_mouse = aggregate_mouse(baseline_rows, baseline_info.frames + 64)
+    right_hold = main_interval(
+        recoil_rows,
+        RIGHT_DOWN,
+        RIGHT_UP,
+        allow_open=args.reference_mode == "ads",
+        end_output_frame=recoil_info.frames - 1,
+    )
     recoil_mouse = aggregate_mouse(recoil_rows, recoil_info.frames + 64)
 
     baseline_start = max(1, args.baseline_start_frame)
     baseline_end = baseline_info.frames - 1 - args.baseline_end_trim
-    print(f"[1/5] Baseline camera motion {baseline_start}-{baseline_end} ...", flush=True)
-    baseline_motion, baseline_motion_rows, baseline_quality = estimate_camera_motion(
-        baseline_video,
-        baseline_info,
-        baseline_start,
-        baseline_end,
-        args.motion_scale,
-        ads=False,
-    )
-    baseline_reliable = np.zeros(baseline_info.frames, dtype=bool)
-    for row in baseline_motion_rows:
-        if row["status"] in ("ok", "start"):
-            baseline_reliable[int(row["frame"])] = True
-    calibration = calibrate_mouse(
-        baseline_motion,
-        baseline_mouse,
-        baseline_reliable,
-        baseline_start,
-        baseline_end,
-        args.max_shift,
-    )
+    baseline_motion_rows: list[dict[str, object]] = []
+    baseline_cache_used = False
+    cache_path = args.baseline_cache.resolve() if args.baseline_cache else None
+    cache_identity = {
+        "baseline_video_size": baseline_video.stat().st_size,
+        "baseline_video_mtime_ns": baseline_video.stat().st_mtime_ns,
+        "baseline_width": baseline_info.width,
+        "baseline_height": baseline_info.height,
+        "baseline_fps": baseline_info.fps,
+        "baseline_frames": baseline_info.frames,
+        "reference_mode": args.reference_mode,
+        "baseline_start_frame": baseline_start,
+        "baseline_end_frame": baseline_end,
+        "motion_scale": args.motion_scale,
+        "max_shift": args.max_shift,
+        "calibration_window": args.calibration_window,
+    }
+    cached: dict[str, object] | None = None
+    if cache_path and cache_path.is_file():
+        try:
+            candidate = json.loads(cache_path.read_text(encoding="utf-8"))
+            if candidate.get("identity") == cache_identity:
+                cached = candidate
+        except (OSError, json.JSONDecodeError):
+            cached = None
+    if cached is not None:
+        print(f"[1/5] Reusing baseline calibration: {cache_path}", flush=True)
+        calibration = dict(cached["calibration"])
+        baseline_quality = dict(cached["baseline_motion_quality"])
+        baseline_cache_used = True
+    else:
+        baseline_rows = load_mouse_rows(baseline_base)
+        baseline_mouse = aggregate_mouse(baseline_rows, baseline_info.frames + 64)
+        print(f"[1/5] Baseline camera motion {baseline_start}-{baseline_end} ...", flush=True)
+        baseline_motion, baseline_motion_rows, baseline_quality = estimate_camera_motion(
+            baseline_video,
+            baseline_info,
+            baseline_start,
+            baseline_end,
+            args.motion_scale,
+            ads=args.reference_mode == "ads",
+        )
+        baseline_reliable = np.zeros(baseline_info.frames, dtype=bool)
+        for row in baseline_motion_rows:
+            if row["status"] in ("ok", "start"):
+                baseline_reliable[int(row["frame"])] = True
+        calibration = calibrate_mouse(
+            baseline_motion,
+            baseline_mouse,
+            baseline_reliable,
+            baseline_start,
+            baseline_end,
+            args.max_shift,
+            args.calibration_window,
+        )
+        if cache_path:
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_path.write_text(
+                json.dumps(
+                    json_value(
+                        {
+                            "identity": cache_identity,
+                            "calibration": calibration,
+                            "baseline_motion_quality": baseline_quality,
+                        }
+                    ),
+                    ensure_ascii=False,
+                    indent=2,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
     print(
         "[2/5] Mouse calibration: "
         f"dx={float(calibration['background_dx_px_per_mouse_count']):.5f}, "
@@ -768,14 +957,25 @@ def main() -> int:
 
     score_start = max(0, left_hold.start_output_frame - 10)
     score_end = min(recoil_info.frames - 1, left_hold.end_output_frame - 10)
-    scores, _ = ammo_change_scores(recoil_video, recoil_info, score_start, score_end)
+    scores, _ = ammo_change_scores(
+        recoil_video, recoil_info, score_start, score_end, args.ammo_slot
+    )
+    ammo_onset_threshold = 0.12
+    ammo_onset_frame = locate_first_ammo_change(
+        scores,
+        score_start,
+        left_hold.start_output_frame,
+        min(left_hold.start_output_frame + 45, score_end),
+        ammo_onset_threshold,
+    )
     shot_frames, cadence = detect_regular_shots(
         scores,
         score_start,
         args.shot_count,
-        first_min=left_hold.start_output_frame,
-        first_max=min(left_hold.start_output_frame + 45, score_end),
+        first_min=ammo_onset_frame,
+        first_max=min(ammo_onset_frame + 3, score_end),
         fps=recoil_info.fps,
+        expected_rpm=args.expected_rpm,
     )
 
     shift = int(calibration["mouse_frame_shift"])
@@ -855,6 +1055,7 @@ def main() -> int:
         compensation_dy = -recoil_y / ads_dy_per_count
         row = {
             "shot": index,
+            "keyframe": frame,
             "video_frame": frame,
             "shot_time_ms": round((frame - shot_frames[0]) * 1000.0 / recoil_info.fps),
             "observed_x_right_px": observed_x,
@@ -872,7 +1073,12 @@ def main() -> int:
         previous_recoil_x, previous_recoil_y = float(recoil_x), float(recoil_y)
 
     print("[5/5] Writing synchronized recoil outputs ...", flush=True)
-    write_csv(output_dir / "baseline_camera_motion.csv", baseline_motion_rows, list(baseline_motion_rows[0]))
+    if baseline_motion_rows:
+        write_csv(
+            output_dir / "baseline_camera_motion.csv",
+            baseline_motion_rows,
+            list(baseline_motion_rows[0]),
+        )
     write_csv(output_dir / "firing_camera_motion.csv", recoil_motion_rows, list(recoil_motion_rows[0]))
     write_csv(output_dir / "recoil_per_frame.csv", frame_rows, list(frame_rows[0]))
     write_csv(output_dir / "recoil_per_shot.csv", shot_rows, list(shot_rows[0]))
@@ -885,6 +1091,18 @@ def main() -> int:
         "reference_mode": args.reference_mode,
         "baseline_video": baseline_video,
         "recoil_video": recoil_video,
+        "video_width": recoil_info.width,
+        "video_height": recoil_info.height,
+        "fps": recoil_info.fps,
+        "fov_degrees": args.fov_deg,
+        "fov_axis": args.fov_axis,
+        "scope_magnification": args.scope_magnification,
+        "ads_fov_multiplier": args.ads_fov_multiplier,
+        "effective_ads_fov_degrees": args.fov_deg * args.ads_fov_multiplier,
+        "baseline_calibration_cache": {
+            "path": cache_path,
+            "reused": baseline_cache_used,
+        },
         "video": {
             "width": recoil_info.width,
             "height": recoil_info.height,
@@ -910,6 +1128,10 @@ def main() -> int:
             "background_dy_px_per_mouse_count": ads_dy_per_count,
         },
         "shot_detection": {
+            "algorithm": "active-ammo-row-onset-v3",
+            "ammo_slot": args.ammo_slot,
+            "ammo_onset_frame": ammo_onset_frame,
+            "ammo_onset_threshold": ammo_onset_threshold,
             "shot_count": len(shot_frames),
             "shot_frames": shot_frames,
             **cadence,
