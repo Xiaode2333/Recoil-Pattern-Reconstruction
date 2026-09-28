@@ -92,8 +92,10 @@ python convert_to_recoiltrainer.py reconstruction_output/keyframes_recoil.csv \
   --output reconstruction_output/profile.json
 ```
 
-For a standalone export without that checkout, use `--segmentation single
---skip-trainer-validation` and validate the resulting profile before use.
+The converter's game, Workshop title, and tag defaults target Delta Force; set
+their corresponding flags for other games. For a standalone export without a
+Recoil Trainer checkout, use `--segmentation single` and
+`--skip-trainer-validation`, then validate the resulting profile before use.
 
 ## Outputs and validation
 
