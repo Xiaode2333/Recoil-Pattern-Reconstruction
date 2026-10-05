@@ -19,6 +19,10 @@ common reference frame to recover a time-aligned two-dimensional trajectory.
 Every run also exports match quality, RANSAC diagnostics, reticle confidence,
 and explicit failure/interpolation status.
 
+The portable backend also supports automatic analysis followed by explicit frame/reticle
+review, with independent marker checks and auditable export. See
+[local analysis and frame review](docs/automatic_review.md) for its API, tests and limitations.
+
 ```mermaid
 flowchart LR
     V[120 FPS video] --> S[frame/event synchronization]
